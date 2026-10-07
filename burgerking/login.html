@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../fonts/stylesheet/BKBulMatPro.css">
+    <link rel="stylesheet" href="../fonts/stylesheet/SDGothicNeoRound.css">
+    <link rel="stylesheet" href="../fonts/stylesheet/pretendardvariable.css">
+    
+    <!-- 공통 기본 스타일시트 -->
+    <link rel="stylesheet" href="../css/default.css">
+
+
+    <title>Burgerking Login Pages</title>
+
+    <style>
+        :root {
+            --font: "SD Gothic Neo Round", "SDGothicNeoRound", sans-serif;
+            --font-pre: "Pretendard Variable", sans-serif;
+            --font-BKR: "BKBulMatPro", sans-serif;
+            /* 버거킹 색상 */
+            --primary: #512314;
+            --focus: #D62302;
+            --baseBorder: #D9CFC6;
+            --inputBg: #FFFCF9;
+            --errorColor: #C54734;
+            --placeholder: #EBE6E2;
+            --text: #766053;
+            --bg: #F4EBDC;
+            --button: #E9DDCD;
+
+        }
+        html {
+            font-size: 62.5%;
+        }
+        
+        /* 전체 텍스트 스타일 */
+        /* 색상은 변수로 지정합니다. */
+        body {
+            font-family: var(--font);
+            font-size: 1.6rem;
+            color: var(--primary);
+            background-color: var(--bg);
+        } 
+        a {
+            color: inherit
+        }
+        #wrap {
+            min-height: 100dvh;
+            background-color: var(--bg);
+            width: 96%;
+            max-width: 1024px;
+            min-width: 360px;
+            padding: 20px 20px;
+            /** margin-left와 margin-right를 auto로 지정하는 방법도 있습니다. **/
+            margin: 0 auto;
+            background-color: var(--bg);
+        }
+        .prev_btn {
+            width: 48px;
+            height: 48px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        /**
+            background-color: red;
+            background-image: url("images/Arrow%20Left.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: scroll;
+            background-size: auto;
+        **/
+        /** 위의 설정을 간결하게 작성한 예시입니다. **/
+        background: url("images/Arrow%20Left.svg")
+        no-repeat scroll center / auto;
+        }
+
+
+
+        h1 {
+            font-size: 2.0rem;
+        }
+        main {
+            background-color: var(--bg);
+            padding: 48px 20px 90px;
+        }
+        .title {
+            font-family: var(--font-BKR);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 50px;
+        } 
+        .title > span:first-child {
+            font-size: 2.5rem;
+            line-height: 1;
+        }        
+        .title > span:last-child {
+            font-size: 3.5rem;
+            line-height: 1;
+        }
+
+        
+        /* 입력 요소도 색상을 상속합니다. */
+        /* 입력 요소의 배경색을 지정해 다른 요소와 구분합니다. */
+        /** 기본 스타일시트에 정의되어 있어 아래 규칙은 생략합니다.
+        input {
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit
+        }
+        **/
+        
+        /** 로그인 입력창의 테두리와 배경색을 지정합니다. **/
+        input {
+            border: 1px solid var(--baseBorder);
+            background-color: var(--inputBg);
+        }
+        input::placeholder {
+            color: var(--placeholder)
+        }
+        
+
+
+        .email {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        input[type="email"] {
+            margin-top: 8px;
+        }
+
+        input[type="password"] {
+            margin-top: 10px;
+        }
+
+
+        input[type="email"],
+        input[type="password"] {
+            /** input 요소는 기본적으로 인라인 블록으로 표시됩니다. **/
+            width: 100%;
+            height: 50px;
+            /** 
+            padding-left: 20px;
+            padding-right: 20px;
+            아래와 같이 한 번에 지정할 수도 있습니다.
+            **/
+            padding: 0 20px;
+            border-radius: 10px;
+        }
+        .input_box.rela {
+            position: relative;
+        }
+        
+
+        /* button 요소에는 필요한 글꼴 및 색상 속성을 별도로 지정합니다. */
+        /* 로그인 버튼 */
+        .login_btn {
+            width: 100%;
+            height: 44px;
+            /** max-width: 350px; **/
+            border-radius: 22px;
+            font-family: inherit;
+            font-size: inherit;
+            color: var(--placeholder);
+            background-color: var(--primary);
+            border: none;
+            opacity: 0.2;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+        .login_link {
+            margin-top: 20px;
+            font-family: var(--font-pre);
+            font-weight: 500;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .login_link a::after {
+            content: "";
+            display: inline-block;
+            width: 1px;
+            height: 12px;
+            background-color: var(--primary);
+            opacity: 0.5;
+        }
+        .login_link a {
+            display: inline-flex; /** 인라인 플렉스 방식으로 한 줄에 배치합니다. **/
+            align-items: center;
+            column-gap: 4px;
+        }
+        .login_link a:last-child::after {
+            content: "";
+            display: none;
+        }
+        .sns_login {
+            margin-top: 96px;
+        }
+        
+        /* SNS 로그인 텍스트 */
+        .sns_login > p {
+            display: flex;
+            align-items: center;
+            column-gap: 12px;
+            font-size: 1.3rem;
+            color: var(--text);
+            margin-bottom: 35px;
+            justify-content: center;
+            /** 텍스트가 줄바꿈되지 않도록 합니다. **/
+            white-space: nowrap;
+        }
+        .sns_login > p::before,
+        .sns_login > p::after {
+            content: "";
+            display: inline-block;
+            width: 90px;
+            height: 1px;
+            background-color: var(--primary);
+            opacity: 0.3;
+            width: 100%;
+        }
+
+
+        /** 테스트용 스타일 예시입니다. **/
+        /**
+        header {
+            background-color: darkgreen;
+            text-align: center;
+        }
+        **/
+
+        /** 비밀번호 표시 버튼의 아이콘 위치를 지정합니다. **/
+        .pw_btn {
+            position: absolute;
+            right: 20px;
+            bottom: 12px;
+            width: 26px;
+            height: 26px;
+            background: url(images/Eye\ Closed.svg)
+            no-repeat center / 26px;
+        }
+        .login_option span {
+            display: inline-flex;
+            align-items: center;
+            column-gap: 6px;
+        }
+
+        .login_option label {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .login_option {
+            margin-top: 12px;
+        }
+
+        .login_option label:first-child {
+            margin-right: 30px;
+        }
+
+        .login_option .check + span::before {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: url(images/Check\ Boxes\ Disabled.svg)
+            no-repeat center / contain;
+        }
+        .login_option .check:checked + span:before {
+            content: "";
+            background: url(images/Check\ Boxes\ Active.svg)
+            no-repeat center / contain;
+        }
+
+        .sns_list {
+            display: flex;
+            column-gap: 20px;
+            justify-content: center; /** 아이콘 목록을 가운데 정렬합니다. **/
+        }
+        /** SNS 로그인 아이콘을 배치합니다. **/
+        .sns_list > a {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 45px;
+        }
+        .sns_list > a:first-child {
+            background-image: url(images/kakaotalk.svg);
+        }
+
+        .sns_list > a:nth-child(2) {
+            background-image: url(images/naver.svg);
+        }
+
+        .sns_list > a:nth-child(3) {
+            background-image: url(images/apple.svg);
+        }
+
+        .sns_list > a:last-child {
+            background-image: url(images/samsungcard.svg);
+        }
+
+        header {
+
+            /** flex-direction을 반대 방향으로 배치하는 예시입니다. **/
+            align-items: center;
+            position: relative;
+            display: flex;
+            /** position: absolute가 적용된 자식 요소는 일반적인 Flex 배치 흐름에서 제외됩니다. **/
+            justify-content: center;
+            height: 48px;
+        }
+
+    </style> 
+
+
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <!-- 헤더 구성 확인을 위한 테스트 예시입니다. -->
+            <!--
+            <h1 style="background-color: red;">로그인</h1>
+            <span style="background-color: yellow;">
+            테스트
+            </span>
+            <button class="prev_btn"><span>이전버튼</span></button>
+            -->
+            
+            <h1>로그인</h1>
+            <button class="prev_btn">
+                <span class="sr-only">이전버튼</span>
+            </button> 
+        </header>
+        <main>
+            <h2 class="title">
+                <span>안녕하세요:)</span>
+                <span>버거킹입니다.</span>
+            </h2>
+            <form action="">
+                <!-- 이메일 로그인 -->
+                <fieldset>
+                    <!-- default.css의 sr-only 스타일을 적용해 스크린 리더에서만 읽도록 합니다. -->
+                    <legend class="sr-only">로그인화면</legend>
+                    <!-- 아이디 -->
+                    <label for="email" class="email">이메일 로그인</label>
+                    <div class="input_box">
+                        <input type="email" id="email" name="email" placeholder="아이디(이메일)을 입력해 주세요">
+                    </div>
+                    <!-- 비밀번호 -->
+                    <div class="input_box rela">
+                        <input type="password" name="password" placeholder="비밀번호를 입력해 주세요">
+                        <button type="button" class="pw_btn">
+                            <span class="sr-only">비밀번호 보기</span></button>
+                    </div>
+                    <div class="login_option">
+                        <label>
+                            <input type="checkbox" class="check sr-only">
+                            <span>자동 로그인</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="check sr-only">
+                            <span>아이디 저장</span>
+                        </label>
+                    </div>
+
+                    <!-- 로그인 버튼 -->
+                    <button type="submit" class="login_btn">로그인</button>
+                </fieldset>
+            </form>        
+            <div class="login_link">
+                <a href="#">아이디 찾기</a>
+                <a href="#">비밀번호 재설정</a>
+                <a href="#">회원가입</a>
+            </div>  
+            <div class="sns_login">
+                <p>SNS으로 간편하게 로그인</p>
+                <div class="sns_list">
+                    <!-- SNS 로그인 아이콘 -->
+                    <a href="#">
+                    <span class="sr-only">카카오로그인</span></a>
+                    <a href="#">
+                    <span class="sr-only">네이버로그인</span></a>
+                    <a href="#">
+                    <span class="sr-only">애플로그인</span></a>
+                    <a href="#">
+                    <span class="sr-only">삼성카드로그인</span></a>
+                </div>
+            </div>   
+        </main>
+    </div> 
+
+
+
+</body>
+</html>
