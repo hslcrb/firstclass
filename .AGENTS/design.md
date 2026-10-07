@@ -1,393 +1,598 @@
-# Burger King UI Skeleton — Unified Design Guide
+# HiMark Login UI Coding Standard — Burger King Baseline v2
 
-## 0. Skill Rules
+## 0. Why this version exists
 
-# Burger King UI Skeleton
+The previous guide captured semantic structure and Burger King styling, but one practical behavior was too weak: a UI request could still produce HTML markup without CSS, forcing a second request.
 
-## Core principle
+The approved reference behavior is now the current Burger King password-reset implementation style: **plain HTML + embedded CSS in one file, existing project imports and assets, semantic markup, restrained formatting, and no unnecessary JavaScript or framework.**
 
-Treat the current `hslcrb/firstclass` Burger King UI as the
-implementation source of truth. A new screen should look and read like a
-sibling of the existing code, not like a generic redesign.
-
-**Required reference:** Read `design_guide.md` before generating or
-editing a screen. If repository access exists, re-read the current
-closest HTML and `css/default.css` because the repository may have
-changed since this package was created.
-
-## Workflow
-
-1.  Identify the target screen's content and actions.
-2.  Inspect the closest existing Burger King screen.
-3.  Reuse semantic structure and existing classes when their roles
-    match.
-4.  Reuse `../css/default.css`; do not duplicate its reset/accessibility
-    rules.
-5.  Reuse the project's tokens, typography, Flexbox/layout logic and
-    asset conventions.
-6.  Add classes only for genuinely new roles.
-7.  Choose HTML elements by content meaning, never by Figma frame/group
-    names.
-8.  Verify semantics, accessible names, paths and responsive sizing.
-
-## Preservation contract
-
-Preserve by default: - `#wrap > header + main`. - One page `h1`;
-`h2.title` for subordinate intro headings when semantically
-appropriate. - Account forms with `form > fieldset`. - `.input_box`,
-`.pw_btn`, `.login_option`, `.login_btn`, `.login_link`, `.sns_login`,
-`.sns_list` when the same roles recur. - `.sr-only` for visually hidden
-accessible text. - Real native inputs and buttons; submit actions use
-`type="submit"`, other buttons use `type="button"`. - CSS custom
-properties for shared colors/fonts. - `rem` typography under
-`html { font-size: 62.5%; }`. - Normal flow/Flexbox first; absolute
-positioning only for local overlays.
-
-Do not blindly copy known source inconsistencies. Korean pages use
-`lang="ko"` even though the current login file says `en`. Do not copy
-lesson/test comments into new production markup unless requested.
-
-## Source priority
-
-1.  Current explicit user instruction.
-2.  Current repository code for the same UI role.
-3.  `design_guide.md`.
-4.  General web conventions.
-
-Do not silently migrate to React, Tailwind, BEM, CSS Modules, or another
-architecture.
-
-## Brand adaptation
-
-When this skeleton is used for another brand, keep the implementation
-discipline and change the brand layer deliberately.
-
-Usually keep: semantic form hierarchy, reset/accessibility behavior,
-native controls, Flexbox approach, responsive container logic.
-
-Re-evaluate for the target brand: colors, fonts, assets, copy,
-providers, spacing, radii and CTA styling. Do not merely recolor Burger
-King and claim brand fidelity.
-
-## Completion checklist
-
--   One meaningful `h1`; sensible heading order.
--   Form elements match their real roles.
--   Icon-only controls have accessible names.
--   Existing classes/tokens are reused where roles match.
--   No duplicated reset rules from `default.css`.
--   Relative font/CSS/image paths are verified.
--   Layout remains usable within the project's 360px--1024px width
-    model.
--   No unnecessary framework or JavaScript was introduced.
-
+This document is the implementation contract.
 
 ---
 
-## 1. Design Guide
+# 1. Default deliverable contract
 
-# Burger King Login UI --- Design Guide
+## 1.1 UI implementation means HTML + CSS
 
-## Basis and scope
+When the user asks to create, reproduce, implement, code, or convert a UI screen, produce:
 
-This guide is derived from the current `hslcrb/firstclass` repository,
-not from a generic Burger King design system.
+```text
+one complete .html file
++ existing font stylesheet links
++ ../css/default.css
++ a <style> block containing screen CSS
++ semantic <body> markup
+```
 
-Snapshot basis: - `burgerking/login.html` ---
-`21bed9c0a3f6a1bf1427bea1cbc76a5ef53db7de` - `burgerking/repw.html` ---
-`9604236283a3269e1d3a14a98102c1615886add9` - `css/default.css` ---
-`c768f5d113e391bec83e3956d69d422e237b203f` - `burgerking/flex.html` ---
-`4814eb5595533b54a2e324adf493910b9e073492`
+This is the default without needing the user to say "CSS도 포함".
 
-If these change, inspect the repository again.
+If the user says only:
 
-## 1. Current architecture
+> 이 화면 HTML로 만들어줘
 
-The project uses plain HTML and CSS. `login.html` imports three font
-stylesheets and `../css/default.css`, then keeps screen-specific styling
-in a `<style>` block. Login assets are referenced from
-`burgerking/images/`. `repw.html` currently provides mainly semantic
-skeleton markup. `flex.html` is a Flexbox learning file, not a
-production page template.
+in a Figma/UI implementation context, still return **HTML + CSS**.
 
-Do not introduce a framework simply to add another screen.
+CSS is omitted only when the user explicitly requests markup-only output, e.g. "HTML만", "마크업만", "CSS 빼고", "구조만".
 
-## 2. Semantic skeleton
+## 1.2 JavaScript is opt-in
 
-The established page hierarchy is:
+Do not add JavaScript merely because a control could eventually become interactive.
 
-``` html
+Examples:
+- password-eye button may be present without JS;
+- disabled CTA may remain static;
+- validation indicators may remain visual-only.
+
+Add JS when the user explicitly requests interaction/functionality or asks for JavaScript.
+
+## 1.3 One-file default
+
+Unless the user explicitly requests CSS separation, keep screen-specific CSS inside `<style>` in the same HTML file.
+
+Continue loading the project's existing external resources:
+
+```html
+<link rel="stylesheet" href="../fonts/stylesheet/BKBulMatPro.css">
+<link rel="stylesheet" href="../fonts/stylesheet/SDGothicNeoRound.css">
+<link rel="stylesheet" href="../fonts/stylesheet/pretendardvariable.css">
+<link rel="stylesheet" href="../css/default.css">
+```
+
+Do not duplicate reset rules already handled by `default.css`.
+
+---
+
+# 2. Exact formatting contract
+
+This section is strict because formatting itself is part of the approved coding style.
+
+## 2.1 Indentation
+
+Use exactly **4 spaces per nesting level**.
+
+Never use tabs.
+
+Good:
+
+```html
+<body>
+    <div id="wrap">
+        <header>
+            <h1>로그인</h1>
+        </header>
+    </div>
+</body>
+```
+
+Do not use 2 spaces, 8 spaces per level, tabs, or minified formatting.
+
+## 2.2 HTML blank lines
+
+Use blank lines to separate **major logical groups**, not every element.
+
+Approved rhythm:
+
+```html
+<header>
+    <h1>비밀번호 재설정</h1>
+
+    <button type="button" class="close_btn">
+        <span class="sr-only">닫기</span>
+    </button>
+</header>
+
+<main>
+    <div class="intro">
+        ...
+    </div>
+
+    <form>
+        ...
+    </form>
+</main>
+```
+
+Rules:
+- one blank line between major siblings when it improves scanning;
+- one blank line between a visible label, input group, status/help block, notice block, and main CTA;
+- no giant stacks of empty lines;
+- no blank line after every single line.
+
+## 2.3 Multiline attributes
+
+Keep short elements on one line when readable:
+
+```html
+<button type="submit" class="reset_btn" disabled>
+    완료
+</button>
+```
+
+For long form controls, use one attribute per line:
+
+```html
+<input
+    type="password"
+    id="new-password"
+    name="new_password"
+    placeholder="새로운 비밀번호를 입력해 주세요"
+    autocomplete="new-password"
+>
+```
+
+The closing `>` aligns with the opening `<input`.
+
+Do not aggressively wrap tiny elements just to make them taller.
+
+## 2.4 CSS indentation
+
+Top-level selectors start at column 1.
+
+Declarations use 4 spaces.
+
+Nested selectors inside `@media` use 4 spaces; declarations inside them use 8 spaces.
+
+```css
+.reset_btn {
+    width: 100%;
+    height: 44px;
+}
+
+@media (min-width: 600px) {
+    body {
+        display: flex;
+        justify-content: center;
+    }
+}
+```
+
+Use:
+- one declaration per line;
+- one space after `:`;
+- semicolon on every declaration;
+- opening brace on the selector line;
+- closing brace aligned with the selector.
+
+## 2.5 CSS section order
+
+Prefer this order:
+
+1. `:root`
+2. `html`
+3. `body`
+4. `#wrap`
+5. `header`
+6. page title / header controls
+7. `main`
+8. intro/title/description
+9. form/fieldset/labels
+10. inputs
+11. input-state or icon controls
+12. validation/help/list blocks
+13. secondary notices
+14. primary CTA
+15. state selectors such as `:disabled`
+16. media queries
+
+Do not randomly interleave unrelated selectors.
+
+---
+
+# 3. Repository baseline
+
+Repository: `hslcrb/firstclass`
+
+Primary reference files:
+- `burgerking/login.html`
+- `burgerking/repw.html`
+- `css/default.css`
+- `burgerking/images/`
+- `fonts/stylesheet/`
+
+The current `burgerking/repw.html` is the strongest formatting and page-composition reference for new mobile account screens.
+
+When repository access is available, inspect the current source again before making a new screen because the project may evolve.
+
+---
+
+# 4. Semantic HTML contract
+
+HTML tags are chosen by **content meaning**, never by visual shape or Figma layer names.
+
+## 4.1 Page skeleton
+
+Default account-screen skeleton:
+
+```html
 <div id="wrap">
     <header>
         <h1>페이지 제목</h1>
         <button type="button">...</button>
     </header>
+
     <main>
-        <h2 class="title">...</h2>
+        <div class="intro">
+            <h2 class="title">...</h2>
+            <p class="description">...</p>
+        </div>
+
         <form>
             <fieldset>
                 <legend class="sr-only">...</legend>
                 ...
-                <button type="submit">...</button>
             </fieldset>
         </form>
     </main>
 </div>
 ```
 
-This is a pattern, not a blind template. Add `section`, `nav`, lists or
-extra headings only when content meaning requires them.
+This is a reusable pattern, not permission to add meaningless containers.
 
-### Existing form vocabulary
+## 4.2 Heading rules
 
-  Role                       Existing pattern
-  -------------------------- ---------------------------------
-  Form group                 `form > fieldset`
-  Hidden group title         `legend.sr-only`
-  Visible email label        `label.email`
-  Input wrapper              `.input_box`
-  Password overlay wrapper   `.input_box.rela`
-  Password visibility        `.pw_btn[type=button]`
-  Login options              `.login_option` + real checkbox
-  Primary submit             `.login_btn[type=submit]`
-  Account links              `.login_link`
-  Social login               `.sns_login`, `.sns_list`
+- one meaningful page `h1`;
+- `h2` for a subordinate content heading, not because the text is visually large;
+- do not jump heading levels for visual size;
+- do not manufacture headings for footer-like details that are not headings.
 
-Password-reset-only vocabulary includes `.description`, `.pw_error`,
-`.pw_check`, `.pw_notice`, `.sns_notice`, `.reset_btn`.
+## 4.3 Form rules
 
-## 3. Shared reset and accessibility
+Use native elements:
+- `form` for submission scope;
+- `fieldset` for related form controls;
+- `legend` for form-group name;
+- `label` for input names;
+- `input type="email"` for email;
+- `input type="password"` for passwords;
+- `input type="checkbox"` for real user-selectable checkboxes;
+- `button type="submit"` for form submission;
+- `button type="button"` for password visibility, close, back, etc.
 
-`css/default.css` supplies box sizing, margin/padding reset,
-Korean-friendly word breaking, list/link/media resets, form
-inheritance/native appearance reset, `:focus-visible`, `.sr-only`,
-reduced-motion handling, `[hidden]`, touch optimization, and
-fieldset/legend reset.
+Do not use `<div>` as a fake button or checkbox.
 
-Do not duplicate those rules per screen.
+## 4.4 Figma does not decide semantics
 
-Icon-only controls keep accessible text:
+A Figma "Frame", "Group", "Form Section", or Auto Layout does not automatically become:
+- `section`;
+- `article`;
+- `nav`;
+- `div`;
+- absolute positioning.
 
-``` html
-<button class="prev_btn" type="button">
-    <span class="sr-only">이전버튼</span>
+Interpret the content first.
+
+A Figma-generated `<a>` or `<div>` may be semantically wrong. Convert it into the correct native HTML element.
+
+## 4.5 Lists
+
+Use `ul > li` when the content is actually a list of parallel items.
+
+Example: password requirements are a list.
+
+Do not turn them into checkboxes merely because a check icon is visible.
+
+---
+
+# 5. Existing project vocabulary
+
+Reuse existing classes when their role is the same.
+
+Stable examples:
+
+```text
+input_box
+pw_btn
+login_option
+login_btn
+login_link
+sns_login
+sns_list
+title
+description
+pw_error
+pw_check
+pw_notice
+sns_notice
+reset_btn
+close_btn
+```
+
+Naming style is pragmatic `snake_case`.
+
+Do not introduce BEM or camelCase into sibling screens without an explicit project-wide change.
+
+Small helper/state classes may be reused only for the same behavior.
+
+---
+
+# 6. Accessibility contract
+
+The project already has `.sr-only` in `default.css`.
+
+Use it for icon-only controls:
+
+```html
+<button type="button" class="close_btn">
+    <span class="sr-only">닫기</span>
 </button>
 ```
 
-Keep the real native input even when CSS draws the visual checkbox.
+Rules:
+- every icon-only interactive element has an accessible name;
+- `placeholder` does not replace a meaningful label;
+- visual check icons do not replace native checkbox semantics when the item is actually selectable;
+- functional disabled CTAs use the `disabled` attribute where appropriate;
+- do not remove focus support supplied by `default.css` without a replacement.
 
-## 4. Design tokens
+---
 
-Current `login.html` defines:
+# 7. Burger King design tokens
 
-``` css
+Reuse role-equivalent variables rather than scattering duplicate literals.
+
+```css
 :root {
     --font: "SD Gothic Neo Round", "SDGothicNeoRound", sans-serif;
     --font-pre: "Pretendard Variable", sans-serif;
     --font-BKR: "BKBulMatPro", sans-serif;
+
     --primary: #512314;
     --focus: #D62302;
     --baseBorder: #D9CFC6;
     --inputBg: #FFFCF9;
-    --errorColor: #C54734;
-    --placeholder: #EBE6E2;
+    --errorColor: #D62302;
+    --placeholder: #D9CFC6;
     --text: #766053;
     --bg: #F4EBDC;
     --button: #E9DDCD;
 }
 ```
 
-Use an existing variable whenever the role is the same. Typography roles
-are: default UI=`--font`, supporting/account text=`--font-pre`,
-expressive Burger King headline=`--font-BKR`.
+Typography roles:
+- default interface → `--font`
+- supporting text → `--font-pre`
+- expressive Burger King headline → `--font-BKR`
 
-The project uses `html { font-size: 62.5%; }` and
-`body { font-size: 1.6rem; }`, so continue its rem convention.
+Use:
 
-## 5. Layout rules
-
-`#wrap` currently uses `min-height:100dvh`, `width:96%`,
-`max-width:1024px`, `min-width:360px`, `padding:20px`, and centered auto
-margins.
-
-The header is 48px tall, uses Flexbox to center the title, and
-absolutely positions the back button locally. `main` uses normal
-document flow and `padding:48px 20px 90px`. `.title` is a vertical flex
-container.
-
-Inputs are 100% wide, 50px tall, padded 20px horizontally, radius 10px,
-with `--baseBorder` and `--inputBg`. Password-eye positioning is local
-to `.input_box.rela`.
-
-The current login CTA is 100% wide, 44px tall and 22px radius. Its shown
-inactive visual state uses opacity; functional disabled state should
-also use the native `disabled` attribute when appropriate.
-
-## 6. Repeated visual patterns
-
-**Checkbox:** `.check.sr-only` remains a real checkbox; `span::before`
-supplies the icon and `:checked` swaps the asset.
-
-**Account links:** `.login_link` uses inline-flex anchors and
-pseudo-element separators. Do not infer `nav` solely from appearance.
-
-**Social login:** heading rules are pseudo-elements; `.sns_list` is
-centered Flexbox; each 45×45 anchor uses a background icon and
-`.sr-only` name.
-
-## 7. Naming and CSS style
-
-Current classes use pragmatic snake_case: `input_box`, `login_btn`,
-`login_link`, `sns_login`, `sns_list`, `pw_btn`, `login_option`.
-Continue that style for sibling classes. Do not mix in BEM/camelCase
-without a deliberate project-wide change.
-
-Prefer existing CSS variables and Flexbox. Avoid absolute-positioning
-the whole Figma composition.
-
-## 8. Assets and paths
-
-Font CSS currently comes from:
-
-``` html
-<link rel="stylesheet" href="../fonts/stylesheet/BKBulMatPro.css">
-<link rel="stylesheet" href="../fonts/stylesheet/SDGothicNeoRound.css">
-<link rel="stylesheet" href="../fonts/stylesheet/pretendardvariable.css">
+```css
+html {
+    font-size: 62.5%;
+}
 ```
 
-Login assets use paths relative to `burgerking/login.html`, such as
-`images/Arrow%20Left.svg` and `images/Eye\ Closed.svg`. Inspect the
-actual `images/` directory before naming a new asset. If a new HTML file
-is placed elsewhere, recalculate all relative paths.
-
-## 9. Known source inconsistencies
-
-These are observations, not permission to rewrite unrelated code: 1.
-`login.html` says `lang="en"` despite Korean content; new Korean screens
-should use `ko`. 2. `login.html` contains classroom/test comments; do
-not multiply them automatically. 3. Page-specific CSS is inline at this
-learning stage; preserve that architecture unless the user asks to
-extract it. 4. `repw.html` is not yet a full visual CSS implementation.
-5. `flex.html` is instructional.
-
-## 10. Procedure for a new screen
-
-1.  Define the screen purpose and primary action.
-2.  Pick the closest existing sibling.
-3.  Map content to semantic HTML.
-4.  Reuse matching classes.
-5.  Introduce only missing screen-specific classes.
-6.  Reuse tokens for equivalent roles.
-7.  Use normal flow/Flexbox before absolute positioning.
-8.  Check native controls and accessible names.
-9.  Test against the 360px minimum and 1024px maximum model.
-10. Verify every relative path.
-
-## 11. Procedure for another brand
-
-Separate **skeleton** from **skin**.
-
-Keep the skeleton when it still fits: reset, semantic form structure,
-accessibility method, native controls, Flexbox strategy, responsive
-logic.
-
-Replace the skin from evidence of the target brand: color tokens, font
-imports, assets, copy, providers, spacing/radii and CTA states.
-Structural changes are allowed when the target service's content
-requires them.
-
-## 12. Review checklist
-
-### HTML
-
--   [ ] Correct document language.
--   [ ] One page `h1`.
--   [ ] Meaningful heading hierarchy.
--   [ ] Correct `form/fieldset/legend/label/input/button` roles.
--   [ ] `type="button"` on non-submit form buttons.
--   [ ] Accessible names for icon-only controls.
-
-### CSS
-
--   [ ] `default.css` loaded once.
--   [ ] Existing tokens reused.
--   [ ] Existing class vocabulary reused where roles match.
--   [ ] Flexbox/normal flow preferred.
--   [ ] No unnecessary duplicate reset.
--   [ ] Responsive width model preserved.
-
-### Assets
-
--   [ ] Existing filenames verified.
--   [ ] Relative paths verified from the new file.
--   [ ] Font imports remain valid.
-
+and continue the project's `rem` convention.
 
 ---
 
-## 2. Repository Source Map
+# 8. Layout contract
 
-# Repository Source Map
+## 8.1 Mobile account-screen default
 
-Repository: `hslcrb/firstclass`, branch `main`.
+For a mobile app-like Figma screen similar to the current password-reset page:
 
-  -----------------------------------------------------------------------
-  File                                Role
-  ----------------------------------- -----------------------------------
-  `burgerking/login.html`             Primary implemented login UI
-                                      reference; semantic HTML plus
-                                      current page CSS
+```css
+body {
+    min-width: 360px;
+}
 
-  `burgerking/repw.html`              Password-reset semantic skeleton
-                                      and screen-specific class
-                                      vocabulary
+#wrap {
+    width: 100%;
+    max-width: 390px;
+    min-height: 100dvh;
+    margin: 0 auto;
+    padding: 20px;
+}
+```
 
-  `css/default.css`                   Shared reset, accessibility and
-                                      base form behavior
+Do not blindly force `390px` on a target screen whose design or existing sibling clearly uses another responsive model.
 
-  `burgerking/flex.html`              Classroom Flexbox notes; conceptual
-                                      reference only
+## 8.2 Flexbox first
 
-  `burgerking/images/`                Login icons/assets; inspect current
-                                      contents before referencing
-                                      filenames
+Use normal document flow and Flexbox for structural layout.
 
-  `fonts/stylesheet/`                 Font stylesheet location used by
-                                      login page
-  -----------------------------------------------------------------------
+Absolute positioning is acceptable for **local overlays**, such as:
+- back button;
+- close button;
+- password-eye icon.
 
-This skill intentionally records repository-derived conventions
-separately from general recommendations. The current repository remains
-authoritative when it changes.
+Do not rebuild a Figma screen with absolute `top/left` coordinates for every block.
 
+## 8.3 Current common dimensions
+
+Current patterns include:
+- header height: `48px`;
+- icon button: `48px`;
+- password-eye icon: `26px`;
+- input height: `50px`;
+- input radius: `10px`;
+- primary button height: `44px`;
+- pill CTA radius: `22px` or `999px`.
+
+Reuse these when the same component role appears and the target design agrees.
 
 ---
 
-## 3. Acceptance Scenarios
+# 9. Assets and paths
 
-# Acceptance Scenarios
+Prefer real repository assets over CSS-drawn approximations when the asset already exists.
 
-These scenarios are used to review whether an agent actually follows the
-skill.
+Examples:
+- `images/Close.svg`
+- `images/Eye Closed.svg`
+- `images/Check-Small Disabled.svg`
+- social provider SVGs
 
-1.  **New Burger King verification screen** --- Expected: inspect
-    closest screen, keep `#wrap/header/main`, native form controls,
-    reuse tokens/classes, add only necessary classes.
-2.  **Figma frame full of groups** --- Expected: do not translate every
-    frame into `section` or absolute coordinates; choose semantics from
-    content and normal flow/Flexbox.
-3.  **New Korean screen copied from login** --- Expected: use
-    `lang="ko"` rather than propagating the known `lang="en"`
-    inconsistency.
-4.  **Icon-only close button** --- Expected: native
-    `button type="button"` with accessible text, normally `.sr-only`.
-5.  **New brand adaptation** --- Expected: preserve reusable
-    implementation skeleton but replace brand evidence deliberately; do
-    not merely recolor Burger King.
-6.  **New image filename not present in source** --- Expected: inspect
-    assets or state that it is unknown; never invent a path.
-7.  **Request to "clean everything up" while adding one screen** ---
-    Expected: avoid unrelated framework migration/refactor unless
-    explicitly requested.
-8.  **Password eye inside a form** --- Expected: `type="button"` and
-    local overlay pattern, not an accidental submit.
+Never invent an asset filename.
+
+If the HTML file lives in `burgerking/`, the font and default CSS paths currently resolve through `../`.
+
+If the file location changes, recalculate relative paths.
+
+---
+
+# 10. Figma implementation contract
+
+When a Figma URL is supplied:
+
+1. inspect the selected node, not a guessed neighboring frame;
+2. inspect the current repository structure;
+3. map visual groups to semantic content;
+4. reuse exact existing assets when available;
+5. reproduce the visual hierarchy using the project's HTML/CSS style;
+6. keep layout responsive instead of copying all absolute coordinates;
+7. preserve source copy unless the user explicitly asks to correct it, except where the user/repository has already corrected it;
+8. distinguish design evidence from implementation inference.
+
+Do not emit React/Tailwind output from Figma tooling into this project.
+
+---
+
+# 11. Other-brand adaptation
+
+The Burger King project supplies the **implementation discipline**, not a universal visual skin.
+
+For another brand:
+
+## Keep when appropriate
+- semantic form hierarchy;
+- `default.css`-style reset/accessibility strategy;
+- native controls;
+- 4-space formatting;
+- embedded page CSS default;
+- Flexbox/normal-flow strategy;
+- class-role reuse approach.
+
+## Replace from target-brand evidence
+- colors;
+- fonts;
+- logos/icons/illustrations;
+- copy;
+- social providers;
+- radii;
+- spacing;
+- CTA style;
+- brand-specific imagery.
+
+Do not just recolor Burger King and call it another brand.
+
+---
+
+# 12. Comments and teaching style
+
+Do not flood production HTML/CSS with tutorial comments.
+
+Use comments only when they preserve a useful implementation reason or the user explicitly asks for instructional comments.
+
+The code itself should remain readable enough to teach from.
+
+When explaining after code, keep the explanation short unless the user asks for a lesson.
+
+---
+
+# 13. Commit behavior
+
+When the user asks to commit a screen to the existing GitHub repository:
+
+1. fetch the current file and current blob SHA;
+2. update the existing path if it already exists;
+3. do not create `repw2.html`, `new-repw.html`, or duplicate files unless asked;
+4. use the user's requested branch;
+5. use the user's requested commit-message format exactly.
+
+When the user requests the `Edit:` format, use:
+
+```text
+Edit: <짧고 구체적인 변경 내용>
+```
+
+After committing, report the path, commit message, and commit SHA concisely.
+
+---
+
+# 14. Output behavior
+
+When the user asks for UI code:
+- provide the finished HTML+CSS file/code first;
+- do not make the user separately ask for CSS;
+- do not ask unnecessary questions when the selected Figma frame and repository already give enough evidence;
+- do not append unrelated alternatives;
+- do not add JS/frameworks without request.
+
+When the user asks only for review or analysis, analyze first and do not rewrite the whole file automatically.
+
+---
+
+# 15. Red flags
+
+Stop and correct the approach if any of these happen:
+
+- output contains only bare HTML even though the request is to implement a UI;
+- indentation changes to 2 spaces or tabs;
+- CSS is split into a new file without request;
+- React/Tailwind appears;
+- every Figma frame becomes a semantic `section`;
+- every visual coordinate becomes `position:absolute`;
+- existing assets are redrawn or renamed without need;
+- placeholder text is treated as a full accessible label;
+- icon-only buttons have no accessible text;
+- JavaScript appears without a behavior request;
+- a new duplicate GitHub file is created when an existing file should be updated;
+- code is buried under long prose before the deliverable.
+
+---
+
+# 16. Pre-delivery checklist
+
+Before returning code or committing it:
+
+## HTML
+- [ ] Complete HTML document.
+- [ ] Correct `lang`.
+- [ ] Existing font and `default.css` links included where appropriate.
+- [ ] Exactly one page `h1`.
+- [ ] Heading hierarchy is meaningful.
+- [ ] Native form/control semantics are correct.
+- [ ] Icon-only controls have `.sr-only` names.
+- [ ] Non-submit buttons have `type="button"`.
+
+## CSS
+- [ ] CSS included by default.
+- [ ] `<style>` is in `<head>`.
+- [ ] 4-space indentation.
+- [ ] Existing tokens reused.
+- [ ] Existing assets reused.
+- [ ] Flexbox/normal flow preferred.
+- [ ] Media query formatting matches the project.
+- [ ] No duplicate reset rules.
+
+## Scope
+- [ ] No JavaScript unless requested.
+- [ ] No framework migration.
+- [ ] No unrelated refactor.
+- [ ] No invented paths/assets.
+
+## GitHub
+- [ ] Existing target file updated rather than duplicated.
+- [ ] Current blob SHA used.
+- [ ] Requested commit-message prefix respected.
