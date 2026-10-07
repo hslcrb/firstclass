@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex 레이아웃</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        p { background-color: yellow; }
+        span { background-color: yellowgreen;}
+        div > div { background-color: lightblue;  }
+
+        .frameBox {
+            background-color: orange;
+            /** padding: 20px; **/
+            width: 500px;
+            height: 500px;
+
+            /** Flexbox 설정 **/
+            /** display: flex; 플렉스를 적용하면 한 줄로 가로 정렬됩니다. **/
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+        /* .frameBox > p {
+            width: 150px;
+            height: 100px;
+        } */
+
+        .item {
+            /* flex-grow: 1; */
+            /* flex-shrink: 1; */
+            flex-basis: auto;
+        }
+        
+        div > p.item {
+            flex-basis: 200px
+            /* flex-grow: 1; */
+            /* width: 400px; */
+            /* flex-shrink: 0;
+            /* width 값을 유지합니다. */
+        }
+        div > span.item {
+            flex-basis: 200px
+            /* flex-grow: 0.5; */
+        }
+        div > div.item {
+            flex-basis: 200px
+            /* flex-grow: 2; */
+        }
+
+
+
+        /* 플렉스 아이템은 보통 Figma의 Hug와 유사하게 콘텐츠 크기에 맞춰집니다.
+           stretch가 적용되면 아이템이 늘어납니다.
+           플렉스 아이템에 너비와 높이를 지정하면 stretch가 적용되지 않을 수 있습니다.
+           Figma의 Hug는 콘텐츠 크기에 맞추는 방식입니다.
+           flex-grow: 0;
+           flex-shrink: 1; 플렉스 아이템이 차지하는 공간이
+           부모 컨테이너보다 크면 아이템을 축소합니다.
+
+           flex-basis: auto; 플렉스 아이템의 기본 크기를 지정합니다.
+           flex-basis와 width의 차이점은 주축의 방향에 따라 나타납니다.
+           flex-direction이 row이면 width와 flex-basis가 가로 크기에 영향을 줍니다.
+           flex-direction이 column이면 width는 가로 크기에,
+           flex-basis는 세로 크기에 영향을 줍니다.
+
+           flex-basis를 200px로 지정해도 flex-shrink의 기본값은 1이므로
+           아이템이 컨테이너에 맞게 200px보다 작아질 수 있습니다.
+
+           플렉스 아이템의 기본값은 flex: 0 1 auto;입니다.
+           flex: 1;은 flex: 1 1 0%와 같습니다.
+           아이템마다 flex-grow를 1로 지정하면 남은 공간을 같은 비율로 나눠 가집니다.
+        */
+
+
+            /** flex-direction: row; 기본값이며 가로 방향으로 배치합니다. **/ **/
+            /** flex-direction: row; /** row에서는 교차축이 세로 방향이므로 stretch가 세로로 늘립니다. **/
+            /** flex-direction: column; /** column에서는 교차축이 가로 방향이므로 stretch가 가로로 늘립니다. **/ **/
+            
+            /** justify-content: center; /** 주축을 기준으로 가운데 정렬합니다. **/ **/
+            /** justify-content: flex-start; /** 주축의 시작점에 정렬합니다. **/ **/
+            /** justify-content: space-evenly; /** 주축을 따라 아이템 사이와 양 끝의 간격을 동일하게 배분합니다. **/ **/ **/
+
+            /** gap: 20px; **/
+
+            /**
+            flex-direction이 row인지 column인지에 따라 주축과 교차축의 방향이 달라집니다.
+            두 방향에서 사용하는 속성은 같지만 적용되는 방향은 달라집니다.
+            예를 들어 align-items: stretch는 row에서 세로로,
+            column에서 가로로 아이템을 늘립니다.
+
+            row-reverse, column-reverse
+            gap
+            row-gap, column-gap
+
+            justify-content 속성 - row에서는 좌우 정렬, column에서는 상하 정렬을 합니다.
+            - flex-start(기본값), center, flex-end, space-around,
+            - space-between, space-evenly
+            - space-between은 양 끝에 여백을 두지 않고 아이템 사이에 간격을 둡니다.
+            - space-evenly는 아이템 사이와 양 끝의 간격을 동일하게 배분합니다.
+            align-items 속성 - row에서는 상하 정렬, column에서는 좌우 정렬을 합니다.
+            - stretch(기본값), flex-start, flex-end, center
+            **/
+            
+            /** align-items: stretch; 기본값이며 교차축 방향으로 늘립니다. **/
+            /** align-items: stretch; **/
+          
+    </style>
+</head>
+<body>
+    <div class="frameBox">
+        <p class="item">플렉스 아이템01</p>
+        <span class="item">플렉스 아이템02</span>
+        <div class="item">플렉스 아이템03</div>
+    </div>
+</body>
+</html>
