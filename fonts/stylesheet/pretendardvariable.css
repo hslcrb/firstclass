@@ -1,0 +1,18 @@
+/* 프리텐다드: 한글·영문 UI용 가변 산세리프체
+   굵기 45부터 920까지 사용할 수 있습니다.
+
+Copyright (c) 2021 Kil Hyung-jin, with Reserved Font Name Pretendard.
+https://github.com/orioncactus/pretendard
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+*/
+
+@font-face {
+	font-family: 'Pretendard Variable';
+	font-weight: 45 920;
+	font-style: normal;
+	font-display: swap;
+	src: url('../PretendardVariable.woff2') format("woff2");
+}

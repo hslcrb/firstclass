@@ -1,0 +1,9 @@
+/* BKBulMatPro: 볼드 손글씨 느낌의 장식용 폰트 */
+@font-face {
+  font-family: "BKBulMatPro";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../BKBulMatPro-Bold.woff") format("woff");
+}
+

@@ -1,0 +1,22 @@
+/* 산돌고딕네오라운드: 둥근 고딕체 / 중간, 굵게, 아주 굵게 */
+@font-face {
+  font-family: "SD Gothic Neo Round";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../SDGothicNeoRound-eMd.woff") format("woff");
+}
+@font-face {
+  font-family: "SD Gothic Neo Round";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../SDGothicNeoRound-gBd.woff") format("woff");
+}
+@font-face {
+  font-family: "SD Gothic Neo Round";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("../SDGothicNeoRound-hEb.woff") format("woff");
+}
