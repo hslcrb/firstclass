@@ -41,8 +41,9 @@
         }
 
         #wrap {
-            width: 100%;
-            max-width: 390px;
+            width: 96%;
+            max-width: 1024px;
+            min-width: 360px;
             min-height: 100dvh;
             margin: 0 auto;
             padding: 20px;
@@ -73,10 +74,14 @@
         }
 
         main {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
             padding-top: 32px;
         }
 
         .intro {
+            width: 100%;
             margin-bottom: 30px;
         }
 
@@ -105,8 +110,24 @@
             color: var(--text);
         }
 
+        form {
+            display: flex;
+            width: 100%;
+        }
+
         fieldset {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
             min-width: 0;
+        }
+
+        .password_group {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
         }
 
         .pw_label {
@@ -117,16 +138,27 @@
             font-weight: 700;
         }
 
-        .input_box {
-            position: relative;
+        .password_fields {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+            width: 100%;
         }
 
-        .input_box + .input_box {
-            margin-top: 10px;
+        .input_box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex: 1 1 auto;
+            width: 100%;
+            min-width: 0;
         }
 
         input[type="password"] {
+            flex: 1 1 auto;
             width: 100%;
+            min-width: 0;
             height: 50px;
             padding: 0 52px 0 16px;
             border: 1px solid var(--baseBorder);
@@ -168,6 +200,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            width: 100%;
             margin-top: 12px;
             padding-left: 6px;
         }
@@ -193,10 +226,18 @@
             opacity: 0.75;
         }
 
-        .pw_notice {
+        .pw_notice_box {
+            display: flex;
+            width: 100%;
             margin-top: 12px;
             padding-top: 12px;
             border-top: 1px solid rgba(81, 35, 20, 0.2);
+        }
+
+        .pw_notice {
+            flex: 1 1 auto;
+            width: 100%;
+            min-width: 0;
             font-family: var(--font-pre);
             font-size: 1.4rem;
             font-weight: 500;
@@ -205,6 +246,10 @@
         }
 
         .sns_notice {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
             margin-top: 54px;
             font-family: var(--font-pre);
             font-size: 1.4rem;
@@ -213,15 +258,20 @@
         }
 
         .sns_notice_title {
+            width: 100%;
             margin-bottom: 10px;
             font-weight: 700;
         }
 
         .sns_notice_text {
+            flex: 1 1 auto;
+            width: 100%;
+            min-width: 0;
             font-weight: 500;
         }
 
         .reset_btn {
+            flex: 0 0 auto;
             width: 100%;
             height: 44px;
             margin-top: 24px;
@@ -238,11 +288,6 @@
         }
 
         @media (min-width: 600px) {
-            body {
-                display: flex;
-                justify-content: center;
-            }
-
             #wrap {
                 min-height: 844px;
             }
@@ -277,40 +322,44 @@
                 <fieldset>
                     <legend class="sr-only">새로운 비밀번호 설정</legend>
 
-                    <label for="new-password" class="pw_label">
-                        새로운 비밀번호
-                    </label>
-
-                    <div class="input_box">
-                        <input
-                            type="password"
-                            id="new-password"
-                            name="new_password"
-                            placeholder="새로운 비밀번호를 입력해 주세요"
-                            autocomplete="new-password"
-                        >
-
-                        <button type="button" class="pw_btn">
-                            <span class="sr-only">비밀번호 보기</span>
-                        </button>
-                    </div>
-
-                    <div class="input_box">
-                        <label for="new-password-confirm" class="sr-only">
-                            새로운 비밀번호 확인
+                    <div class="password_group">
+                        <label for="new-password" class="pw_label">
+                            새로운 비밀번호
                         </label>
 
-                        <input
-                            type="password"
-                            id="new-password-confirm"
-                            name="new_password_confirm"
-                            placeholder="새로운 비밀번호를 입력해 주세요"
-                            autocomplete="new-password"
-                        >
+                        <div class="password_fields">
+                            <div class="input_box">
+                                <input
+                                    type="password"
+                                    id="new-password"
+                                    name="new_password"
+                                    placeholder="새로운 비밀번호를 입력해 주세요"
+                                    autocomplete="new-password"
+                                >
 
-                        <button type="button" class="pw_btn">
-                            <span class="sr-only">비밀번호 확인 보기</span>
-                        </button>
+                                <button type="button" class="pw_btn">
+                                    <span class="sr-only">비밀번호 보기</span>
+                                </button>
+                            </div>
+
+                            <div class="input_box">
+                                <label for="new-password-confirm" class="sr-only">
+                                    새로운 비밀번호 확인
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="new-password-confirm"
+                                    name="new_password_confirm"
+                                    placeholder="새로운 비밀번호를 입력해 주세요"
+                                    autocomplete="new-password"
+                                >
+
+                                <button type="button" class="pw_btn">
+                                    <span class="sr-only">비밀번호 확인 보기</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <p class="pw_error">
@@ -323,10 +372,12 @@
                         <li>아이디와 동일한 비밀번호 사용 불가</li>
                     </ul>
 
-                    <p class="pw_notice">
-                        동일한 글자의 반복이나 연속된 글자, 타인이 알기 쉬운 번호
-                        (생일, 주민번호, 휴대폰번호)는 사용을 자제해주세요.
-                    </p>
+                    <div class="pw_notice_box">
+                        <p class="pw_notice">
+                            동일한 글자의 반복이나 연속된 글자, 타인이 알기 쉬운 번호
+                            (생일, 주민번호, 휴대폰번호)는 사용을 자제해주세요.
+                        </p>
+                    </div>
 
                     <div class="sns_notice">
                         <p class="sns_notice_title">
