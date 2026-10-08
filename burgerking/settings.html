@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+
+    <link rel="stylesheet" href="../fonts/stylesheet/BKBulMatPro.css">
+    <link rel="stylesheet" href="../fonts/stylesheet/SDGothicNeoRound.css">
+    <link rel="stylesheet" href="../fonts/stylesheet/pretendardvariable.css">
+    <link rel="stylesheet" href="../css/default.css">
+
+    <title>앱 환경설정 | 버거킹</title>
+
+    <style>
+        :root {
+            --font: "SD Gothic Neo Round", "SDGothicNeoRound", sans-serif;
+            --font-pre: "Pretendard Variable", sans-serif;
+            --font-BKR: "BKBulMatPro", sans-serif;
+
+            /* 버거킹 색상 */
+            --primary: #512314;
+            --focus: #D62302;
+            --baseBorder: #D9CFC6;
+            --inputBg: #FFFCF9;
+            --errorColor: #C54734;
+            --placeholder: #EBE6E2;
+            --text: #766053;
+            --bg: #F4EBDC;
+            --button: #E9DDCD;
+
+            --disabledBg: #DDCDBE;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            min-width: 360px;
+            font-family: var(--font);
+            font-size: 1.6rem;
+            color: var(--primary);
+            background-color: var(--bg);
+        }
+
+        #wrap {
+            width: 100%;
+            max-width: 1024px;
+            min-width: 360px;
+            min-height: 100dvh;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg);
+        }
+
+        header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 800;
+        }
+
+        .prev_btn {
+            position: absolute;
+            top: 0;
+            left: -17px;
+            width: 48px;
+            height: 48px;
+            background: url("images/Arrow%20Left.svg") no-repeat center / 48px;
+        }
+
+        main {
+            width: 100%;
+            padding-top: 19px;
+        }
+
+        .settings_form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .setting_group {
+            width: 100%;
+        }
+
+        .setting_title {
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+            line-height: 1;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .setting_list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .setting_row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            width: 100%;
+            min-height: 30px;
+        }
+
+        label.setting_row {
+            cursor: pointer;
+        }
+
+        .setting_name,
+        .marketing_name,
+        .version_text {
+            font-size: 1.6rem;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .toggle {
+            display: block;
+            flex: 0 0 40px;
+            width: 40px;
+            height: 30px;
+            background: url("images/Toggle%20off.svg") no-repeat center / 40px 30px;
+        }
+
+        .toggle_check:checked + .toggle {
+            background-image: url("images/Toggle%20on.svg");
+        }
+
+        .chevron_link {
+            color: var(--primary);
+        }
+
+        .chevron_link img {
+            flex: 0 0 30px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .section_divider {
+            width: 100%;
+            height: 1px;
+            margin-top: 1px;
+            background: url("images/Divider%20Horizontal.svg") repeat-x center / 20px 1px;
+        }
+
+        .sub_setting_list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+            padding-left: 10px;
+        }
+
+        .sub_setting_list li {
+            width: 100%;
+        }
+
+        .sub_setting_list .setting_name {
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .sub_setting_list .setting_name::before {
+            content: "•";
+            position: absolute;
+            top: 0;
+            left: 8px;
+        }
+
+        .night_notice {
+            margin-top: 4px;
+            padding-left: 35px;
+            font-size: 1.2rem;
+            line-height: 1.2;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .logout_btn {
+            align-self: center;
+            margin-top: -4px;
+            font-family: var(--font-pre);
+            font-size: 1.4rem;
+            line-height: 1.2;
+            font-weight: 500;
+            color: var(--primary);
+            text-decoration: underline;
+            text-underline-position: from-font;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header>
+            <h1>앱 환경설정</h1>
+
+            <button type="button" class="prev_btn">
+                <span class="sr-only">이전버튼</span>
+            </button>
+        </header>
+
+        <main>
+            <form action="" class="settings_form">
+                <section class="setting_group">
+                    <h2 class="setting_title">로그인</h2>
+
+                    <div class="setting_list">
+                        <label class="setting_row">
+                            <span class="setting_name">자동 로그인</span>
+                            <input type="checkbox" class="toggle_check sr-only" checked>
+                            <span class="toggle"></span>
+                        </label>
+
+                        <a href="#" class="setting_row chevron_link">
+                            <span class="setting_name">SNS 간편로그인</span>
+                            <img src="images/Chevron%20Right.svg" alt="">
+                            <span class="sr-only">SNS 간편로그인 설정으로 이동</span>
+                        </a>
+                    </div>
+
+                    <div class="section_divider" aria-hidden="true"></div>
+                </section>
+
+                <section class="setting_group">
+                    <h2 class="setting_title">편리 기능</h2>
+
+                    <div class="setting_list">
+                        <label class="setting_row">
+                            <span class="setting_name">흔들어서 멤버십 바코드 열기</span>
+                            <input type="checkbox" class="toggle_check sr-only">
+                            <span class="toggle"></span>
+                        </label>
+
+                        <label class="setting_row">
+                            <span class="setting_name">앱 실행 시 멤버십 바코드 바로 열기</span>
+                            <input type="checkbox" class="toggle_check sr-only">
+                            <span class="toggle"></span>
+                        </label>
+
+                        <label class="setting_row">
+                            <span class="setting_name">잠금 화면 주문 현황 표시</span>
+                            <input type="checkbox" class="toggle_check sr-only" checked>
+                            <span class="toggle"></span>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="setting_group">
+                    <h2 class="setting_title">앱 푸시 설정</h2>
+
+                    <div class="setting_list">
+                        <label class="setting_row">
+                            <span class="setting_name">주문 정보 알림 수신 동의</span>
+                            <input type="checkbox" class="toggle_check sr-only" checked>
+                            <span class="toggle"></span>
+                        </label>
+
+                        <div>
+                            <p class="marketing_name">마케팅 정보 (이벤트,혜택) 수신 동의</p>
+
+                            <ul class="sub_setting_list">
+                                <li>
+                                    <label class="setting_row">
+                                        <span class="setting_name">앱 푸시 수신</span>
+                                        <input type="checkbox" class="toggle_check sr-only" checked>
+                                        <span class="toggle"></span>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label class="setting_row">
+                                        <span class="setting_name">SMS 수신</span>
+                                        <input type="checkbox" class="toggle_check sr-only" checked>
+                                        <span class="toggle"></span>
+                                    </label>
+                                </li>
+
+                                <li>
+                                    <label class="setting_row">
+                                        <span class="setting_name">야간 알림 허용</span>
+                                        <input type="checkbox" class="toggle_check sr-only">
+                                        <span class="toggle"></span>
+                                    </label>
+
+                                    <p class="night_notice">
+                                        야간(오후9시 ~ 익일 오전 8시에도 알림을 수신합니다.)
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="setting_group">
+                    <h2 class="setting_title">서비스 동의</h2>
+
+                    <div class="setting_list">
+                        <label class="setting_row">
+                            <span class="setting_name">신호정보 수집/활용 동의</span>
+                            <input type="checkbox" class="toggle_check sr-only">
+                            <span class="toggle"></span>
+                        </label>
+
+                        <p class="version_text">현재 버전 v5.0.21_206.0</p>
+                    </div>
+                </section>
+
+                <button type="button" class="logout_btn">로그아웃</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
