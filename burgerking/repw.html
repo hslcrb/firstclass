@@ -213,6 +213,9 @@
             font-size: 1.4rem;
             font-weight: 500;
             line-height: 1.2;
+        }
+
+        .pw_check li span {
             color: var(--text);
             opacity: 40%;
         }
@@ -222,8 +225,9 @@
             flex: 0 0 12px;
             width: 12px;
             height: 12px;
-            background: var(--primary);
+            background-color: var(--primary);
             mask: url("images/Check-Small Disabled.svg") no-repeat center / contain;
+            /*이미 본 아이콘 자체가 30% 투명도 버전임. opacity: 30%; */
         }
 
         .pw_notice_box {
@@ -367,9 +371,9 @@
                     </p>
 
                     <ul class="pw_check">
-                        <li>최소 8글자 이상 최대 20글자</li>
-                        <li>영어 대/소문자, 숫자, 특수문자 중 3개 이상 조합</li>
-                        <li>아이디와 동일한 비밀번호 사용 불가</li>
+                        <li><span>최소 8글자 이상 최대 20글자</span></li>
+                        <li><span>영어 대/소문자, 숫자, 특수문자 중 3개 이상 조합</span></li>
+                        <li><span>아이디와 동일한 비밀번호 사용 불가</span></li>
                     </ul>
 
                     <div class="pw_notice_box">
