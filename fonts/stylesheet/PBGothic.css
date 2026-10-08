@@ -1,0 +1,24 @@
+/* 파리바게뜨 서체: 레귤러, 볼드 및 인라인 볼드 */
+@font-face {
+  font-family: "PBGothic";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../PBGothic-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "PBGothic";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../PBGothic-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "PBGothic Inline";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../PBGothic-BoldInline.woff2") format("woff2");
+}
