@@ -203,8 +203,6 @@
             width: 100%;
             margin-top: 12px;
             padding-left: 6px;
-            color: var(--text);
-            opacity: 40%;
         }
 
         .pw_check li {
@@ -215,8 +213,8 @@
             font-size: 1.4rem;
             font-weight: 500;
             line-height: 1.2;
-            color: var(--primary);
-            opacity: 30%;
+            color: var(--text);
+            opacity: 40%;
         }
 
         .pw_check li::before {
@@ -224,8 +222,9 @@
             flex: 0 0 12px;
             width: 12px;
             height: 12px;
-            background: url("images/Check-Small Disabled.svg") no-repeat center / contain;
-            opacity: 0.75;
+            background: var(--primary);
+            mask: url("images/Check-Small Disabled.svg") no-repeat center / contain;
+            opacity: 30%;
         }
 
         .pw_notice_box {
