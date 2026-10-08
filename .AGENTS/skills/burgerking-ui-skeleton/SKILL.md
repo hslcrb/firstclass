@@ -48,6 +48,10 @@ Do exactly what the user explicitly asks for—no more and no less. Follow the u
 
 Before and after changing the styling or use of any graphic asset—including SVGs—always inspect the asset itself for built-in colors, fills, strokes, opacity/transparency, and visual states. Check how those intrinsic properties combine with CSS or other effects so properties such as opacity are not unintentionally applied twice and the final appearance matches the user's request. Do not modify the asset file unless the user explicitly asks you to.
 
+## Reminder: Verify Selector Scope and Rendered Results Before and After Changes
+
+Before and after changing HTML or CSS, inspect the affected markup and selector scope. In nested markup, verify that descendant selectors and pseudo-elements apply only to the intended elements; do not assume a selector targeting a parent-like element excludes nested elements of the same type. Check the resulting element/icon counts and rendered appearance against the request so changes do not introduce duplicate graphics or other unintended effects.
+
 ## Reminder: Write CSS Opacity as Percentages
 
 Whenever specifying opacity in CSS, use percentage notation such as `20%` instead of decimal notation such as `0.2`. Apply this consistently to `opacity` declarations and opacity values in colors.
