@@ -5,7 +5,15 @@ description: Use when implementing, extending, reviewing, or adapting plain HTML
 
 # Burger King UI Skeleton v2
 
-Read `design.md` before producing or editing UI code.
+## Skill Documents: Read All Before UI Work
+
+This skill consists of the following documents. Read all three supporting documents before producing, editing, or reviewing UI code:
+
+- `detail.md` — the detailed implementation guide and UI behavior requirements.
+- `design.md` — the design, structure, formatting, and completion checklist.
+- `tests/acceptance.md` — acceptance scenarios for expected behavior and implementation outcomes.
+
+Use `SKILL.md` as the entry point and instruction summary. Apply the supporting documents together; check the relevant scenarios in `tests/acceptance.md` when completing UI work.
 
 ## Non-negotiable default
 
@@ -25,11 +33,16 @@ Do not add JavaScript unless the user explicitly asks for behavior or JavaScript
 ## Source priority
 
 1. The user's current explicit instruction.
-2. Current repository code for the closest existing screen.
-3. `design.md`.
-4. General frontend conventions.
+2. `detail.md`, the detailed implementation guide.
+3. Current repository code for the closest existing screen.
+4. `design.md`.
+5. General frontend conventions.
 
 Do not replace the project's plain HTML/CSS architecture with React, Tailwind, CSS Modules, BEM, a component framework, or another stack unless explicitly requested.
+
+## Reminder: Follow the User's Instructions Literally
+
+Do exactly what the user explicitly asks for—no more and no less. Follow the user's wording and requested scope literally; do not infer additional goals, make unsolicited changes, or alter related files or behavior unless the user specifically asks. If an instruction is ambiguous, ask for clarification before making assumptions or changes.
 
 ## Code shape
 
