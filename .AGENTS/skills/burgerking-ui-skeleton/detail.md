@@ -496,6 +496,45 @@ For another brand:
 
 Do not just recolor Burger King and call it another brand.
 
+## Login page brand color references
+
+Use these color tokens from the current login pages as the complete brand palettes. Keep each palette in its own `:root` block and reuse its variables when implementing pages for that brand.
+
+### Burger King
+
+```css
+:root {
+    --primary: #512314;
+    --focus: #D62302;
+    --baseBorder: #D9CFC6;
+    --inputBg: #FFFCF9;
+    --errorColor: #C54734;
+    --placeholder: #EBE6E2;
+    --text: #766053;
+    --bg: #F4EBDC;
+    --button: #E9DDCD;
+}
+```
+
+### Paris Baguette
+
+```css
+:root {
+    --input-bg: #F4F9FF;
+    --surface-white: #FDFEFF;
+    --navy: #003686;
+    --gold: #C8A84E;
+    --cream: #FEF5E7;
+    --off-white: #FFFCF7;
+    --dark-navy: #0C2340;
+    --blue-gray: #7A9BBF;
+    --blue-gray-thin: #CADCF0;
+    --light-gold: #E8D5A3;
+    --accent-blue: #1A5DAB;
+    --border-bluegray: #E7E9EC;
+}
+```
+
 ---
 
 # 12. Comments and teaching style
