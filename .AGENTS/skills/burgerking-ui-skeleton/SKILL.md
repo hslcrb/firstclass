@@ -5,15 +5,17 @@ description: Use when implementing, extending, reviewing, or adapting plain HTML
 
 # Burger King UI Skeleton v2
 
-## Skill Documents: Read All Before UI Work
+## Skill Documents: Read Every File Before Any Task
 
-This skill consists of the following documents. Read all three supporting documents before producing, editing, or reviewing UI code:
+Before starting any task that uses this skill, read the complete contents of **every file** in this skill directory, including nested directories and test documents. Discover the current file list instead of assuming it has not changed. Do not skip files or stop at excerpts; if a file is too long for one read, continue in ranges until reaching its end.
+
+The current supporting documents are:
 
 - `detail.md` — the detailed implementation guide and UI behavior requirements.
 - `design.md` — the design, structure, formatting, and completion checklist.
 - `tests/acceptance.md` — acceptance scenarios for expected behavior and implementation outcomes.
 
-Use `SKILL.md` as the entry point and instruction summary. Apply the supporting documents together; check the relevant scenarios in `tests/acceptance.md` when completing UI work.
+Use `SKILL.md` as the entry point and instruction summary. Apply all skill documents together and check relevant acceptance scenarios when completing UI work.
 
 ## Non-negotiable default
 
@@ -43,6 +45,23 @@ Do not replace the project's plain HTML/CSS architecture with React, Tailwind, C
 ## Reminder: Follow the User's Instructions Literally
 
 Do exactly what the user explicitly asks for—no more and no less. Follow the user's wording and requested scope literally; do not infer additional goals, make unsolicited changes, or alter related files or behavior unless the user specifically asks. If an instruction is ambiguous, ask for clarification before making assumptions or changes.
+
+## Reminder: Always Include Every Burger King Color Token
+
+Whenever creating or editing any HTML file in the Burger King project, include every color token below in its `:root` block, even when the page does not currently use a token. Keep these names and values exactly as specified; page-specific variables may be added separately.
+
+```css
+/* 버거킹 색상 */
+--primary: #512314;
+--focus: #D62302;
+--baseBorder: #D9CFC6;
+--inputBg: #FFFCF9;
+--errorColor: #C54734;
+--placeholder: #EBE6E2;
+--text: #766053;
+--bg: #F4EBDC;
+--button: #E9DDCD;
+```
 
 ## Reminder: Inspect Graphic Assets Before and After Styling
 
