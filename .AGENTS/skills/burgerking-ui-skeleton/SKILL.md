@@ -64,6 +64,27 @@ Whenever creating or editing any HTML file in the Burger King project, include e
 --button: #E9DDCD;
 ```
 
+## Reminder: Use the Shared Favicon in Every HTML File
+
+Whenever creating or editing any HTML file in this repository, use `shared/favicon.svg` as the page favicon. Directly below the viewport meta tag, add this exact link:
+
+```html
+<link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+```
+
+Leave one blank line after the favicon link, then place the font CSS links below it. Keep the favicon link before the font CSS links in every HTML file.
+
+## Reminder: Use the Matching Commit Message Prefix
+
+When creating a commit for this work, prefix the commit message according to the change type:
+
+- `Edit:` for modifying existing content.
+- `Add:` for creating or adding new content.
+- `Merge:` for merge commits.
+- `Fix:` for corrections or bug fixes.
+
+Keep any more specific commit-message format explicitly requested by the user.
+
 ## Reminder: Inspect Graphic Assets Before and After Styling
 
 Before and after changing the styling or use of any graphic asset—including SVGs—always inspect the asset itself for built-in colors, fills, strokes, opacity/transparency, and visual states. Check how those intrinsic properties combine with CSS or other effects so properties such as opacity are not unintentionally applied twice and the final appearance matches the user's request. Do not modify the asset file unless the user explicitly asks you to.
