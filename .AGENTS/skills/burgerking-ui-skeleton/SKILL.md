@@ -5,11 +5,12 @@ description: Use when implementing, extending, reviewing, or adapting plain HTML
 
 # Burger King UI Skeleton v2
 
-## Skill Documents: Read Every File Before Any Task
+## Skill Documents: Read Every File Before Any Task - Read All Before UI Work
 
 Before starting any task that uses this skill, read the complete contents of **every file** in this skill directory, including nested directories and test documents. Discover the current file list instead of assuming it has not changed. Do not skip files or stop at excerpts; if a file is too long for one read, continue in ranges until reaching its end.
 
 The current supporting documents are:
+This skill consists of the following documents. Read all three supporting documents before producing, editing, or reviewing UI code:
 
 - `detail.md` — the detailed implementation guide and UI behavior requirements.
 - `design.md` — the design, structure, formatting, and completion checklist.
