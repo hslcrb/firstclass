@@ -21,11 +21,9 @@
             --focus: #D62302;
             --baseBorder: #D9CFC6;
             --inputBg: #FFFCF9;
-            --errorColor: #D62302;
             --placeholder: #D9CFC6;
             --text: #766053;
             --bg: #F4EBDC;
-            --button: #E9DDCD;
         }
 
         html {
@@ -168,10 +166,6 @@
             font-weight: 700;
         }
 
-        input[type="password"]::placeholder {
-            color: var(--placeholder);
-        }
-
         input[type="password"]:focus-visible {
             border-color: var(--focus);
             outline: none;
@@ -185,15 +179,6 @@
             height: 26px;
             transform: translateY(-50%);
             background: url("images/Eye Closed.svg") no-repeat center / 26px;
-        }
-
-        .pw_error {
-            margin: 6px 0 0 6px;
-            font-family: var(--font-pre);
-            font-size: 1.4rem;
-            font-weight: 600;
-            line-height: 1.2;
-            color: var(--errorColor);
         }
 
         .pw_check {
@@ -214,7 +199,6 @@
             font-weight: 500;
             line-height: 1.2;
             color: var(--text);
-            opacity: 0.4;
         }
 
         .pw_check li::before {
@@ -222,8 +206,7 @@
             flex: 0 0 12px;
             width: 12px;
             height: 12px;
-            background: url("images/Check-Small Disabled.svg") no-repeat center / contain;
-            opacity: 0.75;
+            background: url("images/Check-Small Active.svg") no-repeat center / contain;
         }
 
         .pw_notice_box {
@@ -282,11 +265,6 @@
             background-color: var(--primary);
         }
 
-        .reset_btn:disabled {
-            opacity: 0.2;
-            cursor: default;
-        }
-
         @media (min-width: 600px) {
             #wrap {
                 min-height: 844px;
@@ -333,7 +311,7 @@
                                     type="password"
                                     id="new-password"
                                     name="new_password"
-                                    placeholder="새로운 비밀번호를 입력해 주세요"
+                                    value="12345678"
                                     autocomplete="new-password"
                                 >
 
@@ -351,7 +329,7 @@
                                     type="password"
                                     id="new-password-confirm"
                                     name="new_password_confirm"
-                                    placeholder="새로운 비밀번호를 입력해 주세요"
+                                    value="12345678"
                                     autocomplete="new-password"
                                 >
 
@@ -361,10 +339,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <p class="pw_error">
-                        최소 8글자 이상 최대 20글자까지 사용하여 주세요.
-                    </p>
 
                     <ul class="pw_check">
                         <li>최소 8글자 이상 최대 20글자</li>
@@ -391,7 +365,7 @@
                         </p>
                     </div>
 
-                    <button type="submit" class="reset_btn" disabled>
+                    <button type="submit" class="reset_btn">
                         완료
                     </button>
                 </fieldset>
