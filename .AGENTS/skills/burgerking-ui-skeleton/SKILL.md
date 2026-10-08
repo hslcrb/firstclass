@@ -44,6 +44,14 @@ Do not replace the project's plain HTML/CSS architecture with React, Tailwind, C
 
 Do exactly what the user explicitly asks for—no more and no less. Follow the user's wording and requested scope literally; do not infer additional goals, make unsolicited changes, or alter related files or behavior unless the user specifically asks. If an instruction is ambiguous, ask for clarification before making assumptions or changes.
 
+## Reminder: Inspect Graphic Assets Before and After Styling
+
+Before and after changing the styling or use of any graphic asset—including SVGs—always inspect the asset itself for built-in colors, fills, strokes, opacity/transparency, and visual states. Check how those intrinsic properties combine with CSS or other effects so properties such as opacity are not unintentionally applied twice and the final appearance matches the user's request. Do not modify the asset file unless the user explicitly asks you to.
+
+## Reminder: Write CSS Opacity as Percentages
+
+Whenever specifying opacity in CSS, use percentage notation such as `20%` instead of decimal notation such as `0.2`. Apply this consistently to `opacity` declarations and opacity values in colors.
+
 ## Code shape
 
 Generated code must follow the formatting contract in `design.md` exactly:
