@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+
+    <link rel="stylesheet" href="../fonts/stylesheet/BKBulMatPro.css">
+    <link rel="stylesheet" href="../fonts/stylesheet/SDGothicNeoRound.css">
+    <link rel="stylesheet" href="../fonts/stylesheet/pretendardvariable.css">
+    <link rel="stylesheet" href="../css/default.css">
+
+    <title>로그인 | 버거킹</title>
+
+    <style>
+        :root {
+            --font: "SD Gothic Neo Round", "SDGothicNeoRound", sans-serif;
+            --font-pre: "Pretendard Variable", sans-serif;
+            --font-BKR: "BKBulMatPro", sans-serif;
+
+            /* 버거킹 색상 */
+            --primary: #512314;
+            --focus: #D62302;
+            --baseBorder: #D9CFC6;
+            --inputBg: #FFFCF9;
+            --errorColor: #C54734;
+            --placeholder: #EBE6E2;
+            --text: #766053;
+            --bg: #F4EBDC;
+            --button: #E9DDCD;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            min-width: 360px;
+            font-family: var(--font);
+            font-size: 1.6rem;
+            color: var(--primary);
+            background-color: var(--bg);
+        }
+
+        #wrap {
+            width: 100%;
+            max-width: 1024px;
+            min-width: 360px;
+            min-height: 100dvh;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg);
+        }
+
+        header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 800;
+        }
+
+        .prev_btn {
+            position: absolute;
+            top: 0;
+            left: -17px;
+            width: 48px;
+            height: 48px;
+            background: url("images/Arrow%20Left.svg") no-repeat center / 48px;
+        }
+
+        main {
+            width: 100%;
+            padding-top: 32px;
+        }
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 50px;
+            font-family: var(--font-BKR);
+            line-height: 1;
+        }
+
+        .title > span:first-child {
+            font-size: 2rem;
+        }
+
+        .title > span:last-child {
+            font-size: 3.8rem;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-width: 0;
+            gap: 20px;
+        }
+
+        .input_fields {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .credentials {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .email_section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .email_label {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .input_box {
+            position: relative;
+            display: flex;
+            width: 100%;
+            min-width: 0;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            min-width: 0;
+            height: 50px;
+            padding: 0 16px;
+            border: 1px solid var(--baseBorder);
+            border-radius: 10px;
+            background-color: rgb(255 252 249 / 98%);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        input[type="password"] {
+            padding-right: 52px;
+            letter-spacing: 8px;
+        }
+
+        input::placeholder {
+            color: var(--placeholder);
+        }
+
+        input:focus-visible {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .pw_btn {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 26px;
+            height: 26px;
+            transform: translateY(-50%);
+            background: url("images/Eye%20Closed.svg") no-repeat center / 26px;
+        }
+
+        .login_option {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .login_option label {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .login_option span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1.6rem;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .login_option .check + span::before {
+            content: "";
+            flex: 0 0 30px;
+            width: 30px;
+            height: 30px;
+            background: url("images/Check%20Boxes%20Disabled.svg") no-repeat center / contain;
+        }
+
+        .login_option .check:checked + span::before {
+            background-image: url("images/Check%20Boxes%20Active.svg");
+        }
+
+        .login_btn {
+            width: 100%;
+            height: 44px;
+            border-radius: 999px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--placeholder);
+            background-color: var(--primary);
+        }
+
+        .login_link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            height: 14px;
+            font-family: var(--font-pre);
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: -0.14px;
+        }
+
+        .divider_vertical {
+            flex: 0 0 1px;
+            width: 1px;
+            height: 12px;
+            background: url("images/Divider%20Vertical.svg") no-repeat center / 1px 12px;
+        }
+
+        .sns_login {
+            margin-top: 82px;
+        }
+
+        .sns_login > p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 35px;
+            font-size: 1.3rem;
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: 0.39px;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .sns_login > p::before,
+        .sns_login > p::after {
+            content: "";
+            flex: 1 1 auto;
+            height: 1px;
+            background: url("images/Divider%20Horizontal.svg") repeat-x center / 20px 1px;
+        }
+
+        .sns_list {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .sns_list a,
+        .sns_list img {
+            width: 45px;
+            height: 45px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header>
+            <h1>로그인</h1>
+
+            <button type="button" class="prev_btn">
+                <span class="sr-only">이전버튼</span>
+            </button>
+        </header>
+
+        <main>
+            <h2 class="title">
+                <span>안녕하세요 :)</span>
+                <span>버거킹입니다.</span>
+            </h2>
+
+            <form action="">
+                <fieldset>
+                    <legend class="sr-only">버거킹 이메일 로그인</legend>
+
+                    <div class="input_fields">
+                        <div class="credentials">
+                            <div class="email_section">
+                                <label for="email" class="email_label">
+                                    이메일 로그인
+                                </label>
+
+                                <div class="input_box">
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value="user@example.com"
+                                        autocomplete="email"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="input_box">
+                                <label for="password" class="sr-only">
+                                    비밀번호
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    value="12345678"
+                                    autocomplete="current-password"
+                                >
+
+                                <button type="button" class="pw_btn">
+                                    <span class="sr-only">비밀번호 보기</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="login_option">
+                            <label>
+                                <input type="checkbox" class="check sr-only" checked>
+                                <span>자동 로그인</span>
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class="check sr-only">
+                                <span>아이디 저장</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login_btn">
+                        로그인
+                    </button>
+
+                    <div class="login_link">
+                        <a href="#">아이디 찾기</a>
+                        <span class="divider_vertical" aria-hidden="true"></span>
+                        <a href="#">비밀번호 재설정</a>
+                        <span class="divider_vertical" aria-hidden="true"></span>
+                        <a href="#">회원가입</a>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="sns_login">
+                <p>SNS으로 간편하게 로그인</p>
+
+                <div class="sns_list">
+                    <a href="#">
+                        <img src="images/naver.svg" alt="">
+                        <span class="sr-only">네이버 로그인</span>
+                    </a>
+
+                    <a href="#">
+                        <img src="images/kakaotalk.svg" alt="">
+                        <span class="sr-only">카카오 로그인</span>
+                    </a>
+
+                    <a href="#">
+                        <img src="images/samsungcard.svg" alt="">
+                        <span class="sr-only">삼성카드 로그인</span>
+                    </a>
+
+                    <a href="#">
+                        <img src="images/apple.svg" alt="">
+                        <span class="sr-only">애플 로그인</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
