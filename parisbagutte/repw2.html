@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+
+    <link rel="stylesheet" href="../fonts/stylesheet/PBGothic.css">
+    <link rel="stylesheet" href="../css/default.css">
+
+    <title>비밀번호 재설정 | 파리바게뜨</title>
+
+    <style>
+        :root {
+            --font: "PBGothic", sans-serif;
+
+            /* 파리바게뜨 색상 */
+            --input-bg: #F4F9FF;
+            --surface-white: #FDFEFF;
+            --navy: #003686;
+            --gold: #C8A84E;
+            --cream: #FEF5E7;
+            --off-white: #FFFCF7;
+            --dark-navy: #0C2340;
+            --blue-gray: #7A9BBF;
+            --blue-gray-thin: #CADCF0;
+            --light-gold: #E8D5A3;
+            --accent-blue: #1A5DAB;
+            --border-bluegray: #E7E9EC;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            min-width: 360px;
+            font-family: var(--font);
+            font-size: 1.6rem;
+            color: var(--dark-navy);
+            background-color: var(--surface-white);
+        }
+
+        #wrap {
+            width: 100%;
+            max-width: 1024px;
+            min-width: 360px;
+            min-height: 100dvh;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--surface-white);
+        }
+
+        header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .close_btn {
+            position: absolute;
+            top: 0;
+            right: -14px;
+            width: 48px;
+            height: 48px;
+            background: url("images/Icon/Close.svg") no-repeat center / 48px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-top: 32px;
+        }
+
+        .intro {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            line-height: 1;
+        }
+
+        .title > span:first-child {
+            font-size: 2rem;
+            font-weight: 400;
+        }
+
+        .title > span:last-child {
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        .description {
+            margin-top: 10px;
+            font-size: 1.6rem;
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--blue-gray);
+        }
+
+        form {
+            display: flex;
+            width: 100%;
+        }
+
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .password_group {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .pw_label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.5rem;
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        .password_fields {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .input_box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex: 1 1 auto;
+            width: 100%;
+            min-width: 0;
+        }
+
+        input[type="password"] {
+            flex: 1 1 auto;
+            width: 100%;
+            min-width: 0;
+            height: 50px;
+            padding: 0 46px 0 16px;
+            border: 1px solid var(--blue-gray-thin);
+            border-radius: 6px;
+            background-color: var(--input-bg);
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 9.6px;
+            color: var(--navy);
+        }
+
+        input[type="password"]::placeholder {
+            color: var(--blue-gray);
+        }
+
+        input[type="password"]:focus-visible {
+            border-color: var(--accent-blue);
+            outline: none;
+        }
+
+        .pw_btn {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 26px;
+            height: 26px;
+            transform: translateY(-50%);
+            background: url("images/Icon/EyeClosed.svg") no-repeat center / 26px;
+        }
+
+        .pw_check {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            margin-top: 12px;
+            padding-left: 6px;
+        }
+
+        .pw_check li {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.4rem;
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--accent-blue);
+        }
+
+        .pw_check li::before {
+            content: "";
+            flex: 0 0 12px;
+            width: 12px;
+            height: 12px;
+            background: url("images/Size=Small,%20State=Selected.svg") no-repeat center / contain;
+        }
+
+        .pw_notice {
+            width: 100%;
+            min-width: 0;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-bluegray);
+            font-size: 1.4rem;
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--blue-gray);
+        }
+
+        .reset_btn {
+            width: 100%;
+            height: 44px;
+            margin-top: 192px;
+            border-radius: 999px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--surface-white);
+            background-color: var(--navy);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header>
+            <h1>비밀번호 재설정</h1>
+
+            <button type="button" class="close_btn">
+                <span class="sr-only">닫기</span>
+            </button>
+        </header>
+
+        <main>
+            <div class="intro">
+                <h2 class="title">
+                    <span>새로운 비밀번호를</span>
+                    <span>입력해주세요</span>
+                </h2>
+
+                <p class="description">
+                    비밀번호 재설정 시, 파리바게뜨 서비스를<br>
+                    변경하신 비밀번호로 이용할 수 있어요.
+                </p>
+            </div>
+
+            <form action="" method="post">
+                <fieldset>
+                    <legend class="sr-only">새로운 비밀번호 설정</legend>
+
+                    <div class="password_group">
+                        <label for="new-password" class="pw_label">
+                            새로운 비밀번호
+                        </label>
+
+                        <div class="password_fields">
+                            <div class="input_box">
+                                <input
+                                    type="password"
+                                    id="new-password"
+                                    name="new_password"
+                                    value="12345678"
+                                    autocomplete="new-password"
+                                >
+
+                                <button type="button" class="pw_btn">
+                                    <span class="sr-only">비밀번호 보기</span>
+                                </button>
+                            </div>
+
+                            <div class="input_box">
+                                <label for="new-password-confirm" class="sr-only">
+                                    새로운 비밀번호 확인
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="new-password-confirm"
+                                    name="new_password_confirm"
+                                    value="12345678"
+                                    autocomplete="new-password"
+                                >
+
+                                <button type="button" class="pw_btn">
+                                    <span class="sr-only">비밀번호 확인 보기</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="pw_check">
+                        <li><span>최소 8글자 이상 최대 20글자</span></li>
+                        <li><span>영어 대/소문자,숫자,특수문자 중 3개 이상 조합</span></li>
+                        <li><span>아이디와 동일한 비밀번호 사용 불가</span></li>
+                    </ul>
+
+                    <p class="pw_notice">
+                        동일한 글자의 반복이나 연속된 글자, 타인이 알기 쉬운 번호
+                        (생일, 주민등록번호 등)는 사용을 자제해주세요.
+                    </p>
+
+                    <button type="submit" class="reset_btn">
+                        로그인
+                    </button>
+                </fieldset>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
