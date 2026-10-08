@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+
+    <link rel="stylesheet" href="../fonts/stylesheet/PBGothic.css">
+    <link rel="stylesheet" href="../css/default.css">
+
+    <title>로그인 | 파리바게뜨</title>
+
+    <style>
+        :root {
+            --font: "PBGothic", sans-serif;
+
+            /* 파리바게뜨 색상 */
+            --input-bg: #F4F9FF;
+            --surface-white: #FDFEFF;
+            --navy: #003686;
+            --gold: #C8A84E;
+            --cream: #FEF5E7;
+            --off-white: #FFFCF7;
+            --dark-navy: #0C2340;
+            --blue-gray: #7A9BBF;
+            --blue-gray-thin: #CADCF0;
+            --light-gold: #E8D5A3;
+            --accent-blue: #1A5DAB;
+            --border-bluegray: #E7E9EC;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            min-width: 360px;
+            font-family: var(--font);
+            font-size: 1.6rem;
+            color: var(--dark-navy);
+            background-color: var(--surface-white);
+        }
+
+        #wrap {
+            width: 100%;
+            max-width: 1024px;
+            min-width: 360px;
+            min-height: 100dvh;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--surface-white);
+        }
+
+        header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .prev_btn {
+            position: absolute;
+            top: 0;
+            left: -17px;
+            width: 48px;
+            height: 48px;
+            background: url("images/Icon/ArrowLeft.svg") no-repeat center / 48px;
+        }
+
+        main {
+            width: 100%;
+            padding-top: 32px;
+        }
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 50px;
+            line-height: 1;
+        }
+
+        .title > span:first-child {
+            font-size: 2rem;
+            font-weight: 400;
+        }
+
+        .title > span:last-child {
+            font-size: 3.8rem;
+            font-weight: 700;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-width: 0;
+            gap: 20px;
+        }
+
+        .input_fields {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .credentials {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .email_section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .email_label {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        .input_box {
+            position: relative;
+            display: flex;
+            width: 100%;
+            min-width: 0;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            min-width: 0;
+            height: 50px;
+            padding: 0 16px;
+            border: 1px solid var(--blue-gray-thin);
+            border-radius: 6px;
+            background-color: var(--input-bg);
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--navy);
+        }
+
+        input[type="password"] {
+            padding-right: 46px;
+            letter-spacing: 9.6px;
+        }
+
+        input::placeholder {
+            color: var(--blue-gray);
+        }
+
+        input:focus-visible {
+            border-color: var(--navy);
+            outline: none;
+        }
+
+        .pw_btn {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 26px;
+            height: 26px;
+            transform: translateY(-50%);
+            background: url("images/Icon/EyeClosed.svg") no-repeat center / 26px;
+        }
+
+        .login_option {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .login_option label {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .login_option span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1.6rem;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .login_option .check + span::before {
+            content: "";
+            flex: 0 0 30px;
+            width: 30px;
+            height: 30px;
+            background: url("images/State=Unselected.svg") no-repeat center / contain;
+        }
+
+        .login_option .check:checked + span::before {
+            background-image: url("images/State=Selected.svg");
+        }
+
+        .login_btn {
+            width: 100%;
+            height: 44px;
+            border-radius: 999px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--surface-white);
+            background-color: var(--navy);
+        }
+
+        .login_link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            height: 14px;
+        }
+
+        .login_link a {
+            font-size: 1.4rem;
+            line-height: 1;
+            font-weight: 400;
+            letter-spacing: -0.14px;
+            color: var(--dark-navy);
+        }
+
+        .login_link a:not(:last-child)::after {
+            content: "";
+            display: inline-block;
+            width: 1px;
+            height: 12px;
+            margin-left: 12px;
+            vertical-align: middle;
+            background-color: var(--dark-navy);
+            opacity: 10%;
+        }
+
+        .sns_login {
+            margin-top: 82px;
+        }
+
+        .sns_login > p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 35px;
+            font-size: 1.3rem;
+            line-height: 1;
+            font-weight: 400;
+            letter-spacing: 0.39px;
+            color: var(--blue-gray);
+            white-space: nowrap;
+        }
+
+        .sns_login > p::before,
+        .sns_login > p::after {
+            content: "";
+            flex: 1 1 auto;
+            height: 1px;
+            background-color: var(--dark-navy);
+            opacity: 10%;
+        }
+
+        .sns_list {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .sns_list a {
+            display: block;
+            width: 45px;
+            height: 45px;
+        }
+
+        .sns_list img {
+            width: 45px;
+            height: 45px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header>
+            <h1>PARIS BAGUETTE</h1>
+
+            <button type="button" class="prev_btn">
+                <span class="sr-only">이전버튼</span>
+            </button>
+        </header>
+
+        <main>
+            <h2 class="title">
+                <span>환영합니다</span>
+                <span>파리바게뜨입니다.</span>
+            </h2>
+
+            <form action="">
+                <fieldset>
+                    <legend class="sr-only">파리바게뜨 이메일 로그인</legend>
+
+                    <div class="input_fields">
+                        <div class="credentials">
+                            <div class="email_section">
+                                <label for="email" class="email_label">
+                                    이메일 로그인
+                                </label>
+
+                                <div class="input_box">
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value="rheehose@rheehose.com"
+                                        autocomplete="email"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="input_box">
+                                <label for="password" class="sr-only">
+                                    비밀번호
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    value="12345678"
+                                    autocomplete="current-password"
+                                >
+
+                                <button type="button" class="pw_btn">
+                                    <span class="sr-only">비밀번호 보기</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="login_option">
+                            <label>
+                                <input type="checkbox" class="check sr-only" checked>
+                                <span>자동 로그인</span>
+                            </label>
+
+                            <label>
+                                <input type="checkbox" class="check sr-only">
+                                <span>아이디 저장</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login_btn">
+                        로그인
+                    </button>
+
+                    <div class="login_link">
+                        <a href="#">아이디 찾기</a>
+                        <a href="#">비밀번호 재설정</a>
+                        <a href="#">회원가입</a>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="sns_login">
+                <p>SNS으로 간편하게 로그인</p>
+
+                <div class="sns_list">
+                    <a href="#">
+                        <img src="images/Brand/Brand=Naver.svg" alt="">
+                        <span class="sr-only">네이버 로그인</span>
+                    </a>
+
+                    <a href="#">
+                        <img src="images/Brand/Brand=Kakao.svg" alt="">
+                        <span class="sr-only">카카오 로그인</span>
+                    </a>
+
+                    <a href="#">
+                        <img src="images/Brand/Brand=Samsung%20Card.svg" alt="">
+                        <span class="sr-only">삼성카드 로그인</span>
+                    </a>
+
+                    <a href="#">
+                        <img src="images/Brand/Brand=Apple.svg" alt="">
+                        <span class="sr-only">애플 로그인</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
