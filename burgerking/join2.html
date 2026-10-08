@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../fonts/stylesheet/BKBulMatPro.css">
+    <link rel="stylesheet" href="../fonts/stylesheet/SDGothicNeoRound.css">
+    <link rel="stylesheet" href="../fonts/stylesheet/pretendardvariable.css">
+    <link rel="stylesheet" href="../css/default.css">
+
+    <title>회원가입 | 버거킹</title>
+
+    <style>
+        :root {
+            --font: "SD Gothic Neo Round", "SDGothicNeoRound", sans-serif;
+            --font-pre: "Pretendard Variable", sans-serif;
+            --font-BKR: "BKBulMatPro", sans-serif;
+
+            --primary: #512314;
+            --baseBorder: #D9CFC6;
+            --inputBg: #FFFCF9;
+            --placeholder: #EBE6E2;
+            --text: #766053;
+            --bg: #F4EBDC;
+            --disabled: #DDCDBE;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            min-width: 360px;
+            font-family: var(--font);
+            font-size: 1.6rem;
+            color: var(--primary);
+            background-color: var(--bg);
+        }
+
+        #wrap {
+            width: 96%;
+            max-width: 1024px;
+            min-width: 360px;
+            min-height: 100dvh;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg);
+        }
+
+        header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 800;
+        }
+
+        .prev_btn {
+            position: absolute;
+            top: 0;
+            left: -20px;
+            width: 48px;
+            height: 48px;
+            background: url("images/Arrow%20Left.svg") no-repeat center / auto;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-top: 32px;
+        }
+
+        .intro {
+            position: relative;
+            width: 100%;
+            min-height: 154px;
+            margin-bottom: 16px;
+        }
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            font-family: var(--font-BKR);
+            line-height: 1;
+        }
+
+        .title > span:first-child {
+            font-size: 1.8rem;
+        }
+
+        .title > span:nth-child(2),
+        .title > span:last-child {
+            font-size: 2.4rem;
+        }
+
+        .description {
+            margin-top: 10px;
+            font-family: var(--font-pre);
+            font-size: 1.6rem;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text);
+        }
+
+        .welcome_img {
+            position: absolute;
+            top: -24px;
+            right: -20px;
+            width: 90px;
+            height: 160px;
+        }
+
+        form {
+            display: flex;
+            width: 100%;
+        }
+
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .agree_all {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.2;
+            cursor: pointer;
+        }
+
+        .agree_all span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .agree_all span::before {
+            content: "";
+            flex: 0 0 30px;
+            width: 30px;
+            height: 30px;
+            background: url("images/Check%20Boxes%20Disabled.svg") no-repeat center / contain;
+        }
+
+        .agree_all input:checked + span::before {
+            background-image: url("images/Check%20Boxes%20Active.svg");
+        }
+
+        .agree_desc {
+            margin-top: 8px;
+            padding-left: 38px;
+            font-family: var(--font-pre);
+            font-size: 1.4rem;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text);
+        }
+
+        .terms_list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            margin-top: 17px;
+            padding-top: 17px;
+            border-top: 1px solid rgb(81 35 20 / 10%);
+        }
+
+        .terms_list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .term_label {
+            display: flex;
+            align-items: center;
+            min-width: 0;
+            cursor: pointer;
+        }
+
+        .term_label span {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .term_label span::before {
+            content: "";
+            flex: 0 0 20px;
+            width: 20px;
+            height: 20px;
+            background: url("images/Check%20Large%20Inactive.svg") no-repeat center / contain;
+        }
+
+        .term_label input:checked + span::before {
+            background-image: url("images/Check%20Large%20Active.svg");
+        }
+
+        .terms_list a {
+            flex: 0 0 auto;
+            font-family: var(--font-pre);
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--primary);
+            text-decoration: underline;
+            text-underline-position: from-font;
+        }
+
+        .marketing_title {
+            margin-top: 28px;
+            padding-left: 28px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--text);
+        }
+
+        .marketing_list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 12px;
+            padding-left: 28px;
+        }
+
+        .marketing_list label {
+            display: flex;
+            align-items: center;
+            cursor: default;
+        }
+
+        .marketing_list label > span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text);
+        }
+
+        .marketing_list label > span > span {
+            opacity: 40%;
+        }
+
+        .marketing_list label > span::before {
+            content: "";
+            flex: 0 0 20px;
+            width: 20px;
+            height: 20px;
+            background: url("images/Check%20Large%20Disabled.svg") no-repeat center / contain;
+        }
+
+        .join_btn {
+            width: 100%;
+            height: 44px;
+            margin-top: 36px;
+            border-radius: 999px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--placeholder);
+            background-color: var(--primary);
+        }
+
+        .join_btn:disabled {
+            opacity: 20%;
+            cursor: default;
+        }
+
+        @media (min-width: 600px) {
+            .intro {
+                min-height: 168px;
+            }
+
+            .welcome_img {
+                right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header>
+            <h1>회원가입</h1>
+
+            <button type="button" class="prev_btn">
+                <span class="sr-only">이전버튼</span>
+            </button>
+        </header>
+
+        <main>
+            <div class="intro">
+                <h2 class="title">
+                    <span>환영합니다</span>
+                    <span>버거킹 서비스 이용약관에</span>
+                    <span>동의해주세요.</span>
+                </h2>
+
+                <p class="description">
+                    가입을 원하시면 이용약관 동의 후<br>
+                    본인인증을 진행해 주세요
+                </p>
+
+                <img
+                    src="images/French%20Fries%20Hand.svg"
+                    alt=""
+                    class="welcome_img"
+                >
+            </div>
+
+            <form action="">
+                <fieldset>
+                    <legend class="sr-only">버거킹 회원가입 이용약관 동의</legend>
+
+                    <label class="agree_all">
+                        <input type="checkbox" class="sr-only">
+                        <span>네, 모두 동의합니다.</span>
+                    </label>
+
+                    <p class="agree_desc">
+                        전체동의는 필 수 및 선택정보에 대한 동의도 포함되어 있으며,
+                        개별적으로도 동의를 선택할 수 있습니다.
+                    </p>
+
+                    <ul class="terms_list">
+                        <li>
+                            <label class="term_label">
+                                <input type="checkbox" class="sr-only" required checked>
+                                <span>[필수] 만 14세 이상입니다.</span>
+                            </label>
+                            <a href="#">보기</a>
+                        </li>
+
+                        <li>
+                            <label class="term_label">
+                                <input type="checkbox" class="sr-only" required checked>
+                                <span>[필수] 서비스 이용약관</span>
+                            </label>
+                            <a href="#">보기</a>
+                        </li>
+
+                        <li>
+                            <label class="term_label">
+                                <input type="checkbox" class="sr-only" required checked>
+                                <span>[필수] 개인정보 수집/이용동의</span>
+                            </label>
+                            <a href="#">보기</a>
+                        </li>
+
+                        <li>
+                            <label class="term_label">
+                                <input type="checkbox" class="sr-only" required checked>
+                                <span>[필수] 위치기반 서비스 이용약관</span>
+                            </label>
+                            <a href="#">보기</a>
+                        </li>
+
+                        <li>
+                            <label class="term_label">
+                                <input type="checkbox" class="sr-only">
+                                <span>[선택] 마케팅 활용 수집/이용 동의</span>
+                            </label>
+                            <a href="#">보기</a>
+                        </li>
+                    </ul>
+
+                    <p class="marketing_title">
+                        이벤트/다양한 혜택 정보 및 마케팅(광고성) 정보 수신
+                    </p>
+
+                    <div class="marketing_list">
+                        <label>
+                            <input type="checkbox" class="sr-only" disabled>
+                            <span><span>SMS 수신 동의</span></span>
+                        </label>
+
+                        <label>
+                            <input type="checkbox" class="sr-only" disabled>
+                            <span><span>서비스 혜택 알림(Push)</span></span>
+                        </label>
+
+                        <label>
+                            <input type="checkbox" class="sr-only" disabled>
+                            <span><span>야간 알림 수신 동의(오후 9시~익일 오전 8시)</span></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="join_btn">
+                        본인인증
+                    </button>
+                </fieldset>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
