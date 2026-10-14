@@ -1,0 +1,2 @@
+.AGENTS/*.sh text eol=lf
+.AGENTS/hooks/* text eol=lf

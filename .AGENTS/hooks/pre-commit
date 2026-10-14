@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+[ "${LIM_SKILL_SYNC_ACTIVE-}" != 1 ] || exit 0
+root=$(git rev-parse --show-toplevel)
+exec sh "$root/.AGENTS/skill-sync.sh" pre-commit "$@"
