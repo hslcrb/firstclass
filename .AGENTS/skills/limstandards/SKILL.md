@@ -1,9 +1,9 @@
 ---
-name: burgerking-ui-skeleton
+name: limstandards
 description: Use when implementing, extending, reviewing, or adapting plain HTML/CSS login and account UI screens based on the hslcrb/firstclass Burger King project or when another brand should reuse the same implementation discipline and code style.
 ---
 
-# Burger King UI Skeleton v2
+# limstandards v2
 
 ## Skill Documents: Read Every File Before Any Task - Read All Before UI Work
 
