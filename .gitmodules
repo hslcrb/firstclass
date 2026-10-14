@@ -1,0 +1,8 @@
+[submodule ".AGENTS/skills/limstandards"]
+	path = .AGENTS/skills/limstandards
+	url = https://github.com/hslcrb/limstandards.git
+	branch = main
+[submodule ".AGENTS/skills/limsflex"]
+	path = .AGENTS/skills/limsflex
+	url = https://github.com/hslcrb/limsflex.git
+	branch = main
