@@ -1,34 +1,36 @@
-# renewsejongpac 공개 스냅샷 — 현재 상태 (2026-10-26)
+# renewsejongpac → firstclass 상태 보고서
 
-> **부분 스냅샷 / NOT A FULL MIRROR / NOT DEPLOYMENT-READY**
+**2026-10-26 · PARTIAL MIRROR · 자동 푸시 준비됨 / 실제 전체 전송 미완료**
 
-## 무엇이 반영되었나?
+## 확인된 사실
 
-- 원본: [hslcrb/renewsejongpac](https://github.com/hslcrb/renewsejongpac) (비공개 저장소)
-- 공개 대상: [hslcrb/firstclass/renewsejongpac](https://github.com/hslcrb/firstclass/tree/main/renewsejongpac)
-- 최초 부트스트랩 브랜치는 검색 대화 UI, HTML/CSS/JS 진입점, 일부 v5 소스, 서드파티 Swiper/AOS 정적 파일 및 검사 파일 **26개**를 독립적인 **새 Git 커밋으로** 옮겼습니다.
-- 이 디렉터리에 원본의 `.git`이나 원본 Git 커밋 이력은 담지 않았습니다. 현재는 **전체 프로젝트 파일을 복제한 상태가 아니며**, 누락된 모듈·에셋·구성 파일이 많아 이 스냅샷만으로 앱이 독립 빌드된다고 주장하지 않습니다.
+- 원본: [hslcrb/renewsejongpac](https://github.com/hslcrb/renewsejongpac) — 비공개 저장소.
+- 대상: [hslcrb/firstclass/renewsejongpac](https://github.com/hslcrb/firstclass/tree/main/renewsejongpac) — 공개 저장소의 하위 폴더.
+- 원본 `main`의 Git API 트리: 디렉터리 제외 **58,147개 blob**.
+- firstclass `main`의 `renewsejongpac/`에는 일부 부트스트랩 파일만 있음. **전체 스냅샷이 아니며 독립적인 앱 빌드 완료도 아님.**
+- 기존 부트스트랩에는 v5 Deep Chat 검색 관련 파일과 Swiper/AOS 정적 에셋 일부가 포함됨.
+- 원본 Git 이력은 firstclass로 전송하지 않음.
 
-## 자동 동기화 설계 및 차단 사항
+## CI 없이 동기화하는 현재 방식
 
-- 원본 저장소 `.github/workflows/firstclass-source-mirror.yml`이 **원본 main 업데이트 → 파일 스냅샷 추출 → firstclass 전용 chatgpt-extrahigh/* 브랜치 → PR → merge commit** 흐름을 정의합니다.
-- 독립 커밋만 생성하므로 원본 이력은 전송되지 않습니다. 수동 작업 브랜치의 푸시에서는 미러링이 실행되지 않도록 원본 main 푸시만 트리거합니다.
-- **남은 설정:** 원본 GitHub Actions 시크릿 `FIRSTCLASS_SYNC_TOKEN`(공개 대상 저장소에 Contents/Pull requests 쓰기 권한이 있는 fine-grained PAT)이 필요합니다.
-- **확인된 외부 장애:** 원본 GitHub Actions 기록에 `startup_failure` / `BuildFailed` / 0 jobs가 반복됩니다. 테스트 또는 자동 미러 작업이 실제로 시작됐다고 확인할 수 없으며, Actions 권한·실행 정책·계정 청구 상태 점검이 필요합니다.
-- 따라서 **완전 미러 성공, 자동 푸시 정상 작동, 실제 사이트 배포 및 종단간 테스트 통과를 주장하지 않습니다.**
+이전의 GitHub Actions 기반 미러링은 사용하지 않습니다. 원본에서 `firstclass-source-mirror.yml` 제거 작업을 진행했고, **로컬 Git post-commit 훅 + `git archive` + 별도 대상 저장소 커밋/푸시** 방식으로 교체했습니다.
 
-## 공개 범위 점검
+1. 원본 개발 PC에서 훅을 **한 번 설치**: `bash scripts/install-firstclass-hook.sh`
+2. 원본 커밋 직후 현재 커밋의 추적 파일 전체를 `git archive`로 추출.
+3. firstclass의 **`renewsejongpac/` 폴더만** 복사하고 `chatgpt-extrahigh/mirror-renewsejongpac-*` 브랜치에 독립 커밋·푸시.
+4. 검증 후 firstclass `main`에는 별도 merge commit으로 병합.
 
-- 비공개 원본을 **공개** firstclass로 복사하므로 모든 파일을 무조건 내보내면 위험합니다.
-- 현재 자동화는 `.git/`, `.codex/`, `.opencode/`, `.env*`, `node_modules/`, `.next/`, 개인키 확장자와 DB 파일 등을 제외하고 PEM 키 마커·90MiB 이상 파일을 차단합니다.
-- 이것은 **완전한 비밀정보/개인정보 스캐너가 아닙니다**. 범위를 넓히기 전에 민감한 구성·제3자 라이선스·내부 기록에 대한 감사를 거쳐야 합니다.
-- 공개 부트스트랩에서 선택적으로 복제한 소스 텍스트는 주요 토큰/개인키 패턴을 점검했으나, 이는 안전성을 보증하지 않습니다.
+**Git remote만 추가하는 것으로는 하위 디렉터리로 직접 push할 수 없습니다.** 훅은 표준 Git `post-commit`을 사용합니다. `post-push`는 표준 Git 훅이 아닙니다.
 
-## 잔여 작업
+## 완료 / 미완료
 
-1. 원본 Actions가 `startup_failure` 없이 동작하도록 환경을 복구합니다.
-2. 사용자 측에서 원본 저장소 시크릿 `FIRSTCLASS_SYNC_TOKEN`을 설정합니다. **토큰 값을 채팅이나 Git에 공유하지 마세요.**
-3. 원본의 `docs/firstclass-mirror.md`를 따라 미러 실행, 대상 PR/merge, 전체 파일 목록 및 누락·공개 민감 정보 감사를 완료합니다.
-4. 검증 성공 후에만 **전체 코드 미러 완료** 상태로 변경합니다.
+| 항목 | 상태 |
+| --- | --- |
+| 원본의 스냅샷 푸시 스크립트 | 작성 및 로컬 모의 원격 검증 |
+| 원본의 자동 커밋 훅 및 설치 스크립트 | 작성 |
+| 원본에서 CI 미러 제거 | 작업 브랜치에 반영 |
+| 실제 개발 PC에 훅 설치 | 사용자 로컬 환경에서 수행 필요 |
+| 원본 전체 추적 파일의 firstclass 실제 푸시 | **미완료** |
+| 전체 파일 동등성·빌드 검사 | **미완료** |
 
-이 상태 문서는 자동 미러의 `rsync --delete` 과정에서 제거될 수 있습니다. 향후 원본에서 완전 스냅샷을 공급하면 부트스트랩 경고가 교체되는 것은 정상입니다.
+원본 저장소의 [동기화 운영 가이드](https://github.com/hslcrb/renewsejongpac/blob/main/docs/firstclass-mirror.md)에 설치법, dry-run, 장애 대응 방법을 기록했습니다. 실제 대상의 전체 스냅샷 전송이 검증되기 전에는 완료로 표시하지 않습니다.
