@@ -3,13 +3,13 @@ firstclass 중복 renewsejongpac 스냅샷 보관 기록
 
 기록일: 2026-10-26
 결정: 기존 미러 운영과 별도로 만들었던 firstclass/renewsejongpac/ 복제 경로를 폐기한다.
-상태: 보관용 설명서만 유지. 자동 공개/동기화 수단으로 사용하지 않는다.
+상태: 보관용 텍스트만 유지. 자동 공개/동기화 수단으로 사용하지 않는다.
 
 1. 무엇을 정리했나
-- firstclass/main 에 실수로 병행 추가된 renewsejongpac/ 부분 부트스트랩 디렉터리
-- 이 폴더에 있었던 Deep Chat 및 Swiper/AOS 샘플, 문서, 일부 v5 파일은 원본 저장소의 공식 코드가 아님. 전량을 갖춘 미러나 검증된 별도 빌드도 아님.
-- 기존 firstclass 루트·burgerking/·parisbagutte/·공용 자산·기존 기타 프로젝트는 보존한다.
-- CI/GitHub Actions 새 동기화는 사용하지 않는다.
+- firstclass/main에 병행 추가됐던 renewsejongpac/ 부분 부트스트랩 디렉터리.
+- 이 폴더의 Deep Chat 관련 컴포넌트, Swiper/AOS 에셋, 문서, 일부 v5 파일은 원본 저장소에서 가져온 일부 코드·자산이다. 원본의 전체 트리를 담은 미러나 검증된 독립 배포본이 아닌 불완전한 부분 사본이었다. 원본 코드 자체를 '비공식 코드'라고 뜻하는 것은 아니다.
+- 기존 firstclass 루트·burgerking/·parisbagutte/·공용 자산·기존 기타 프로젝트는 보존했다.
+- 이 작업을 위한 CI/GitHub Actions 새 동기화는 사용하지 않는다.
 
 2. 복구 가능한 원본 커밋 (코드 원문은 Git 이력으로 보존)
 - 정리 전 firstclass/main 커밋: bb17b99df7745870819159410d186e956ae75954
@@ -17,19 +17,25 @@ firstclass 중복 renewsejongpac 스냅샷 보관 기록
 - GitHub 경로:
   https://github.com/hslcrb/firstclass/tree/bb17b99df7745870819159410d186e956ae75954/renewsejongpac
 - 과거 파일 조회 예: git show bb17b99df7745870819159410d186e956ae75954:renewsejongpac/README.md
-- 다시 필요할 때에만 작업 브랜치에서 아래 명령으로 복원:
+- 필요할 때에만 별도 작업 브랜치에서 복원:
   git restore --source=bb17b99df7745870819159410d186e956ae75954 -- renewsejongpac/
 
 3. 유지하는 것
 - 실제 세종문화회관 작업 원본: https://github.com/hslcrb/renewsejongpac
-- 사용자가 이미 별도로 운영 중이라고 알린 공개 미러: 변경하지 않음. 주소 및 구현 방식은 이 기록에서 추측하지 않음.
-- renewsejongpac 기존 Git 이력, 소스, plugins/swiper, plugins/aos 및 다른 관련 작업은 원본 저장소에서 유지.
-- firstclass 의 기존 학습 프로젝트와 Git 이력도 유지.
+- 사용자가 이미 별도로 운영 중이라고 알린 공개 미러: 변경하지 않음. 주소와 구현 방식·운영 상태를 검증했다고 주장하지 않음.
+- renewsejongpac 기존 Git 이력, 소스, plugins/swiper/, plugins/aos/ 및 다른 관련 작업은 원본 저장소에서 유지.
+- firstclass의 기존 학습 프로젝트와 Git 이력도 유지.
 
-4. 폐기 범위
+4. 폐기 범위 및 통합
 - 이 보관 기록은 실행 스크립트가 아니다.
-- firstclass로의 자동 푸시/동기화, 별도 배포, 중복 CI, 새 인증 구성 모두 생성하지 않는다.
-- 원본 저장소에서 이번 목적만을 위한 scripts/sync-firstclass.sh, scripts/install-firstclass-hook.sh, .githooks/post-commit 도 별도 변경에서 정리한다.
-- 원본 개발 PC에 수동 설치된 Git 훅·로컬 Git 설정은 원격 Git 저장소 수정만으로 삭제되지 않으므로, 실제로 설치된 경우에만 로컬에서 확인 후 해제해야 한다.
+- firstclass로의 새로운 자동 푸시/동기화, 별도 배포, 중복 CI, 새 인증 구성 모두 도입하지 않았다.
+- firstclass PR #5 (merge ca5db9a1975152e6eeacae6663a8c337e63355bf)에서 임시 복제 폴더를 제거했다.
+- renewsejongpac PR #16 (merge c3fe552be6db58d8cc011840002e3d20939b6813)에서 스크립트 두 개와 .githooks/post-commit을 제거했다.
+- 원본 개발 PC에 수동 설치된 Git 훅·로컬 Git 설정은 원격 저장소 수정만으로 삭제되지 않는다. 설치된 경우에만 관련 내용을 확인하고 해제한다. 자세한 내용은 원본 docs/firstclass-mirror.md 참조.
+
+5. 검증 한계
+- GitHub Git 트리·PR 변경 경로와 main 병합 결과는 확인했다.
+- Vercel 연결 상태는 build-rate-limit 경고와 함께 실패하여 실제 배포 성공 검증은 이루어지지 않았다.
+- 사용자가 운영하는 다른 공개 미러 또는 개발 PC의 Git 설정은 수정하거나 점검하지 않았다.
 
 이 문서는 중복 구축의 경위와 복원 지점을 보존하기 위한 archive(창고) 기록이다.
