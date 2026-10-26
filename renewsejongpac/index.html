@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+
+    <!-- Pretendard Variable 웹폰트 스타일시트 -->
+    <link rel="stylesheet" href="../fonts/stylesheet/pretendardvariable.css">
+
+    <!-- 공통 기본 스타일시트 -->
+    <link rel="stylesheet" href="../css/default.css">
+
+    <title>세종문화회관 리뉴얼 안내</title>
+
+    <style>
+@font-face {
+    font-family: 'Pretendard Variable';
+    font-weight: 45 920;
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/PretendardVariable.woff2') format('woff2');
+}
+
+:root {
+    --font-base: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Noto Sans KR', sans-serif;
+    --color-bg: #f4f6f9;
+    --color-surface: #ffffff;
+    --color-border: #e2e8f0;
+    --color-text-main: #0f172a;
+    --color-text-sub: #64748b;
+    --color-primary: #1e3a8a;
+    --color-primary-hover: #172554;
+    --color-github: #24292f;
+    --color-github-hover: #0f1419;
+}
+
+body {
+    font-family: var(--font-base);
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+    padding: 24px;
+}
+
+.portal-container {
+    width: 100%;
+    max-width: 440px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 28px;
+    padding: 48px 32px;
+    text-align: center;
+    box-shadow: 0 12px 32px -4px rgb(15 23 42 / 8%);
+}
+
+.portal-header {
+    margin-bottom: 36px;
+}
+
+.portal-tag {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary);
+    background-color: rgb(30 58 138 / 8%);
+    padding: 6px 14px;
+    border-radius: 9999px;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+}
+
+.portal-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--color-text-main);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.portal-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-text-sub);
+    word-break: keep-all;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 54px;
+    padding: 14px 28px;
+    font-family: var(--font-base);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 9999px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    outline: none;
+}
+
+.btn-link:focus-visible {
+    box-shadow: 0 0 0 3px rgb(30 58 138 / 35%);
+}
+
+.btn-github {
+    background-color: var(--color-github);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgb(36 41 47 / 15%);
+}
+
+.btn-github:hover {
+    background-color: var(--color-github-hover);
+    transform: translateY(-1px);
+}
+
+.btn-github:active {
+    transform: translateY(0);
+}
+
+.btn-live {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgb(30 58 138 / 25%);
+}
+
+.btn-live:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn-live:active {
+    transform: translateY(0);
+}
+
+@media (min-width: 480px) {
+    .button-group {
+        flex-direction: row;
+    }
+
+    .btn-link {
+        flex: 1;
+    }
+}
+    </style>
+</head>
+<body>
+    <main class="portal-container" id="renewsejongpac-portal">
+        <header class="portal-header">
+            <span class="portal-tag">Project</span>
+            <h1 class="portal-title">세종문화회관 리뉴얼</h1>
+            <p class="portal-desc">세종문화회관 리뉴얼 프로젝트 안내입니다.</p>
+        </header>
+
+        <nav class="button-group" id="portal-links" aria-label="프로젝트 링크 목록">
+            <a href="#" class="btn-link btn-github">깃허브 방문</a>
+            <a href="https://renewsejongpac.rhee.life/" class="btn-link btn-live">라이브 사이트 방문</a>
+        </nav>
+    </main>
+</body>
+</html>
