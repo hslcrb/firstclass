@@ -28,7 +28,6 @@ const addOptions = select => {
   themes.forEach(theme => { const option=document.createElement("option");option.value=theme.id;option.textContent=theme.name;select.append(option); });
 };
 addOptions($("theme-select"));addOptions($("compare-select"));
-$("theme-count").textContent=themes.length;
 function renderCards(){
  const query=$("search").value.trim().toLowerCase();
  const grid=$("theme-grid");grid.replaceChildren();
