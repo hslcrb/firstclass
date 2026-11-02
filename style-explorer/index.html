@@ -11,22 +11,18 @@
 </head>
 <body>
 <div class="shell">
-  <header class="topbar"><a href="../index.html" class="brandmark"><span class="brand-icon">F</span><span>FIRSTCLASS <small>DESIGN COLLECTION</small></span></a><a class="back-link" href="../index.html">전체 목록 <span aria-hidden="true">↗</span></a></header>
+  <header class="topbar"><h1 class="brandmark">디자인 모아보기</h1><a class="back-link" href="../index.html">전체 목록 ↗</a></header>
   <main>
-    <section class="intro">
-      <div><span class="eyebrow"><span class="dot"></span> DESIGN PLAYGROUND</span><h1>하나의 화면,<br><em>여러 가지 시선.</em></h1><p>같은 화면에 서로 다른 디자인을 입혀보세요.</p></div>
-      <div class="intro-tiles" aria-hidden="true"><div class="shape-tile"><span>✳</span></div><div class="count-tile"><strong id="theme-count">27</strong><span>개 스타일<br>한 곳에서</span></div></div>
-    </section>
     <section class="workspace" aria-label="디자인 살펴보기">
       <aside class="panel collection">
-        <div class="collection-head"><div><span class="section-kicker">COLLECTION</span><h2>디자인 고르기</h2></div><span class="count-pill" id="result-count"></span></div>
+        <div class="collection-head"><div><h2>디자인 고르기</h2></div><span class="count-pill" id="result-count"></span></div>
         <label class="search"><span aria-hidden="true">⌕</span><input type="search" id="search" placeholder="스타일 검색" autocomplete="off"></label>
         <div class="theme-grid" id="theme-grid" role="group" aria-label="디자인 스타일 목록"></div>
         <p class="empty" id="empty" hidden>검색 결과가 없습니다.</p>
       </aside>
       <div class="main-column">
         <section class="panel controls" aria-label="미리보기 설정">
-          <div class="controls-title"><div><span class="section-kicker">YOUR VIEW</span><h2>화면 설정</h2></div><button id="compare-toggle" class="compare-toggle" type="button" aria-pressed="false"><span aria-hidden="true">◫</span> 두 스타일 비교</button></div>
+          <div class="controls-title"><div><h2>화면 설정</h2></div><button id="compare-toggle" class="compare-toggle" type="button" aria-pressed="false"><span aria-hidden="true">◫</span> 두 스타일 비교</button></div>
           <div class="control-grid">
             <div class="field"><span class="field-label">브랜드</span><div class="segmented" role="group" aria-label="브랜드 선택"><button type="button" class="brand-button active" data-brand="parisbagutte" aria-pressed="true">파리바게뜨</button><button type="button" class="brand-button" data-brand="burgerking" aria-pressed="false">버거킹</button></div></div>
             <label class="field" for="screen"><span class="field-label">화면</span><select id="screen"></select></label>
@@ -35,7 +31,7 @@
           </div>
         </section>
         <section class="panel preview-panel" aria-label="디자인 미리보기">
-          <div class="preview-top"><div><span class="section-kicker"><span class="dot"></span> LIVE PREVIEW</span><h2 id="preview-heading">Original</h2></div><div class="preview-actions"><div class="view-modes" role="group" aria-label="미리보기 크기"><button type="button" class="view-mode active" data-view="desktop" aria-pressed="true">넓게</button><button type="button" class="view-mode" data-view="mobile" aria-pressed="false">모바일</button></div><a id="open-page" class="open-page" href="../parisbagutte/login.html" target="_blank" rel="noopener noreferrer">새 창 <span aria-hidden="true">↗</span></a></div></div>
+          <div class="preview-top"><div><h2 id="preview-heading">Original</h2></div><div class="preview-actions"><div class="view-modes" role="group" aria-label="미리보기 크기"><button type="button" class="view-mode active" data-view="desktop" aria-pressed="true">넓게</button><button type="button" class="view-mode" data-view="mobile" aria-pressed="false">모바일</button></div><a id="open-page" class="open-page" href="../parisbagutte/login.html" target="_blank" rel="noopener noreferrer">새 창 <span aria-hidden="true">↗</span></a></div></div>
           <div class="preview-grid" id="preview-grid">
             <div class="preview-item"><div class="preview-label"><span id="preview-label">Original</span><a id="open-primary" href="../parisbagutte/login.html" target="_blank" rel="noopener noreferrer">화면 열기 ↗</a></div><div class="frame-stage"><iframe id="preview" title="선택한 디자인 미리보기" src="../parisbagutte/login.html"></iframe></div></div>
             <div class="preview-item" id="comparison" hidden><div class="preview-label"><span id="comparison-label"></span><a id="open-comparison" target="_blank" rel="noopener noreferrer">화면 열기 ↗</a></div><div class="frame-stage"><iframe id="comparison-preview" title="비교 디자인 미리보기" loading="lazy"></iframe></div></div>
@@ -43,7 +39,6 @@
         </section>
       </div>
     </section>
-    <footer>FIRSTCLASS <span>·</span> 디자인 스타일 모아보기</footer>
   </main>
 </div>
 </body>
