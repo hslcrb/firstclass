@@ -520,3 +520,100 @@ body.style-page {
     font-family: "Bukgul", "Title Myongjo", sans-serif;
     font-weight: normal;
 }
+
+@font-face {
+    font-family: "조선 붓글";
+    src: url("../fonts/north-korea/bukgul.ttf") format("truetype"),
+         url("../fonts/north-korea/pwksbume.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "조선 광명";
+    src: url("../fonts/north-korea/kwangmyeong.ttf") format("truetype"),
+         url("../fonts/north-korea/kwangmyeong.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+}
+
+body.style-page {
+    --font: "조선 광명", serif;
+    --font-pre: "조선 광명", serif;
+    --font-BKR: "조선 붓글", serif;
+    font-family: "조선 광명", serif;
+}
+
+.style-page :is(a, button, input, textarea, select, label, p, li, span, legend),
+.style-page :is(.email_label, .pw_label, .setting_title) {
+    font-family: "조선 광명", serif;
+}
+
+.style-page header h1,
+.style-page .title,
+.style-page .title > span,
+.style-page #wrap::before,
+.style-page :is(.login_btn, .reset_btn, .join_btn) {
+    font-family: "조선 붓글", "조선 광명", serif;
+    font-weight: 400;
+}
+
+/* 2번 버거킹: 광선 포스터와 진한 남색 표지판 */
+body.style-page {
+    background-color: #d6001c;
+    background-image: repeating-linear-gradient(135deg, rgb(255 215 55 / 14%) 0 3px, transparent 3px 14px);
+}
+
+.style-page #wrap {
+    grid-template-areas:
+        "poster heading"
+        "poster content";
+    grid-template-columns: minmax(230px, 0.85fr) minmax(0, 1.15fr);
+    background: #fff0c0;
+    border: 8px solid #064e9b;
+    box-shadow: 10px 10px 0 #ffd531;
+}
+
+.style-page #wrap::before {
+    content: "★\A 봉사\A 안내";
+    display: flex;
+    min-height: 500px;
+    color: #ffe345;
+    border-color: #064e9b;
+    background-image: repeating-conic-gradient(from -10deg at 50% 72%, #ff332f 0deg 13deg, #c8001c 13deg 26deg);
+    font-size: clamp(5.4rem, 7vw, 8.8rem);
+    line-height: 1.2;
+    text-shadow: 4px 4px 0 #8d0714;
+    white-space: pre-line;
+}
+
+.style-page header {
+    background: #c8001c;
+    border-color: #064e9b;
+}
+
+.style-page .login_btn,
+.style-page .reset_btn,
+.style-page .join_btn {
+    background: #c8001c;
+    border-color: #064e9b;
+    box-shadow: 5px 5px 0 #f1c529;
+}
+
+@media (max-width: 700px) {
+    .style-page #wrap {
+        grid-template-areas: "heading" "poster" "content";
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto 1fr;
+    }
+
+    .style-page #wrap::before {
+        position: static;
+        min-height: 220px;
+        height: auto;
+        margin: 18px 0;
+        font-size: clamp(4.5rem, 10vw, 6.8rem);
+    }
+}

@@ -354,3 +354,99 @@ body.style-page {
 .style-page .title > span {
     font-family: "Chonrima Heavy", "Title Myongjo", sans-serif;
 }
+
+@font-face {
+    font-family: "조선 붓글";
+    src: url("../fonts/north-korea/bukgul.ttf") format("truetype"),
+         url("../fonts/north-korea/pwksbume.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "조선 광명";
+    src: url("../fonts/north-korea/kwangmyeong.ttf") format("truetype"),
+         url("../fonts/north-korea/kwangmyeong.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+}
+
+body.style-page {
+    --font: "조선 광명", serif;
+    --font-pre: "조선 광명", serif;
+    --font-BKR: "조선 붓글", serif;
+    font-family: "조선 광명", serif;
+}
+
+.style-page :is(a, button, input, textarea, select, label, p, li, span, legend),
+.style-page :is(.email_label, .pw_label, .setting_title) {
+    font-family: "조선 광명", serif;
+}
+
+.style-page header h1,
+.style-page .title,
+.style-page .title > span,
+.style-page #wrap::before,
+.style-page :is(.login_btn, .reset_btn, .join_btn) {
+    font-family: "조선 붓글", "조선 광명", serif;
+    font-weight: 400;
+}
+
+/* 제과점: 밝은 종이와 청색 지면의 세로형 안내문 */
+body.style-page {
+    background-color: #ddd2ac;
+    background-image: repeating-linear-gradient(0deg, rgb(100 72 31 / 6%) 0 1px, transparent 1px 7px);
+}
+
+.style-page #wrap {
+    display: block;
+    max-width: 760px;
+    padding: clamp(20px, 4vw, 42px);
+    border: 2px solid #1d426c;
+    outline: 6px double #aa1b23;
+    outline-offset: -14px;
+    background: #fff8df;
+    box-shadow: 10px 10px 0 #1d426c;
+}
+
+.style-page #wrap::before {
+    content: "★  봉 사 안 내  ★";
+    display: block;
+    min-height: 0;
+    height: auto;
+    padding: 25px 14px;
+    border: 0;
+    border-top: 8px solid #14558b;
+    border-bottom: 8px solid #14558b;
+    color: #fff4ca;
+    background: #a80e1e;
+    font-size: clamp(3.6rem, 7vw, 6.2rem);
+    line-height: 1.2;
+    text-align: center;
+    text-shadow: none;
+}
+
+.style-page header {
+    margin-top: 18px;
+    border: 2px solid #1d426c;
+    background: #1d426c;
+}
+
+.style-page header h1 {
+    font-size: 3.2rem;
+}
+
+.style-page .title,
+.style-page .title > span {
+    color: #a80e1e;
+    text-shadow: none;
+}
+
+.style-page .login_btn,
+.style-page .reset_btn,
+.style-page .join_btn {
+    background: #1d568b;
+    box-shadow: 4px 4px 0 #cfa542;
+}

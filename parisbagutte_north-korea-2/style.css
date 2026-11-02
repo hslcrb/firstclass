@@ -520,3 +520,93 @@ body.style-page {
     font-family: "Bukgul", "Title Myongjo", sans-serif;
     font-weight: normal;
 }
+
+@font-face {
+    font-family: "조선 붓글";
+    src: url("../fonts/north-korea/bukgul.ttf") format("truetype"),
+         url("../fonts/north-korea/pwksbume.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "조선 광명";
+    src: url("../fonts/north-korea/kwangmyeong.ttf") format("truetype"),
+         url("../fonts/north-korea/kwangmyeong.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+}
+
+body.style-page {
+    --font: "조선 광명", serif;
+    --font-pre: "조선 광명", serif;
+    --font-BKR: "조선 붓글", serif;
+    font-family: "조선 광명", serif;
+}
+
+.style-page :is(a, button, input, textarea, select, label, p, li, span, legend),
+.style-page :is(.email_label, .pw_label, .setting_title) {
+    font-family: "조선 광명", serif;
+}
+
+.style-page header h1,
+.style-page .title,
+.style-page .title > span,
+.style-page #wrap::before,
+.style-page :is(.login_btn, .reset_btn, .join_btn) {
+    font-family: "조선 붓글", "조선 광명", serif;
+    font-weight: 400;
+}
+
+/* 2번 제과점: 가로형 붉은 선전화와 흰 지면 */
+body.style-page {
+    background: #d50022;
+}
+
+.style-page #wrap {
+    grid-template-areas:
+        "poster"
+        "heading"
+        "content";
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    max-width: 850px;
+    border-color: #0665a9;
+    background: #fff9e8;
+    box-shadow: 10px 10px 0 #f7cf39;
+}
+
+.style-page #wrap::before {
+    content: "★  봉 사 안 내  ★";
+    position: static;
+    display: block;
+    min-height: 0;
+    height: auto;
+    padding: 32px 12px;
+    border-color: #0866af;
+    color: #ffe34d;
+    background-image: repeating-conic-gradient(from 0deg at 50% 150%, #fa242c 0deg 12deg, #c8001e 12deg 24deg);
+    font-size: clamp(4.5rem, 8vw, 7.6rem);
+    line-height: 1.2;
+    text-shadow: 3px 3px 0 #004b93;
+    white-space: normal;
+}
+
+.style-page header {
+    margin-top: 20px;
+    background: #075fa7;
+}
+
+.style-page main {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.style-page .title,
+.style-page .title > span {
+    color: #d00020;
+    text-shadow: 2px 2px 0 #ffe35a;
+}
