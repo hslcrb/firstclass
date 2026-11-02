@@ -1,0 +1,241 @@
+:root {
+    --neo-ink: #111111;
+    --neo-blue: #2456ed;
+    --neo-yellow: #ffdc38;
+    --neo-pink: #ff8bc4;
+    --neo-paper: #fffdf4;
+}
+
+html,
+body {
+    min-width: 0;
+    overflow-x: visible;
+}
+
+body {
+    padding: 32px 18px;
+    color: var(--neo-ink);
+    background-color: var(--neo-blue);
+    background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+}
+
+#wrap.neo-brutalism {
+    --dark-navy: var(--neo-ink);
+    --navy: var(--neo-ink);
+    --accent-blue: var(--neo-blue);
+    --blue-gray: #343434;
+    width: 100%;
+    max-width: 640px;
+    min-width: 0;
+    min-height: calc(100dvh - 64px);
+    padding: clamp(18px, 5vw, 36px);
+    border: 4px solid var(--neo-ink);
+    background: var(--neo-paper);
+    box-shadow: 10px 10px 0 var(--neo-ink);
+}
+
+.neo-brutalism header {
+    min-height: 54px;
+    height: auto;
+    padding: 12px 48px;
+    border: 3px solid var(--neo-ink);
+    background: var(--neo-yellow);
+    box-shadow: 5px 5px 0 var(--neo-ink);
+}
+
+.neo-brutalism header h1 {
+    text-align: center;
+    line-height: 1.2;
+}
+
+.neo-brutalism .prev_btn {
+    left: 0;
+}
+
+.neo-brutalism .close_btn {
+    right: 0;
+}
+
+.neo-brutalism main {
+    padding-top: 36px;
+}
+
+.neo-brutalism .title {
+    gap: 10px;
+    line-height: 1.15;
+}
+
+.neo-brutalism .title > span:last-child {
+    font-size: clamp(2.6rem, 6vw, 3.8rem);
+    line-height: 1.15;
+}
+
+.neo-brutalism .intro {
+    min-height: 0;
+    margin-bottom: 30px;
+}
+
+.neo-brutalism .intro:has(.welcome_img) {
+    padding-right: min(25%, 120px);
+}
+
+.neo-brutalism .welcome_img {
+    top: 0;
+    right: 0;
+    width: min(24%, 108px);
+    height: auto;
+}
+
+.neo-brutalism .description,
+.neo-brutalism .pw_notice,
+.neo-brutalism .night_notice {
+    line-height: 1.5;
+}
+
+.neo-brutalism input[type="email"],
+.neo-brutalism input[type="password"] {
+    min-height: 54px;
+    border: 3px solid var(--neo-ink);
+    border-radius: 0;
+    color: var(--neo-ink);
+    background: #ffffff;
+    box-shadow: 4px 4px 0 var(--neo-ink);
+}
+
+.neo-brutalism input::placeholder {
+    color: #555555;
+}
+
+.neo-brutalism input[aria-invalid="true"] {
+    border-color: #bd183b;
+    box-shadow: 4px 4px 0 #bd183b;
+}
+
+.neo-brutalism .error_message,
+.neo-brutalism .pw_error {
+    color: #a80023;
+}
+
+.neo-brutalism .login_btn,
+.neo-brutalism .reset_btn,
+.neo-brutalism .join_btn {
+    min-height: 54px;
+    height: auto;
+    padding: 12px 18px;
+    border: 3px solid var(--neo-ink);
+    border-radius: 0;
+    color: #ffffff;
+    background: var(--neo-blue);
+    box-shadow: 6px 6px 0 var(--neo-ink);
+}
+
+.neo-brutalism .login_btn:disabled,
+.neo-brutalism .reset_btn:disabled,
+.neo-brutalism .join_btn:disabled {
+    color: #333333;
+    background: #d5d5d5;
+    opacity: 100%;
+}
+
+.neo-brutalism .login_btn:not(:disabled):active,
+.neo-brutalism .reset_btn:not(:disabled):active,
+.neo-brutalism .join_btn:not(:disabled):active {
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0 var(--neo-ink);
+}
+
+.neo-brutalism .terms_all,
+.neo-brutalism .setting_group {
+    padding: 16px;
+    border: 3px solid var(--neo-ink);
+    background: var(--neo-yellow);
+    box-shadow: 5px 5px 0 var(--neo-ink);
+}
+
+.neo-brutalism .terms_list {
+    margin-top: 28px;
+}
+
+.neo-brutalism .marketing {
+    max-width: 100%;
+}
+
+.neo-brutalism .marketing_title,
+.neo-brutalism .marketing_list span {
+    line-height: 1.4;
+}
+
+.neo-brutalism .marketing_list input:disabled + span > span {
+    opacity: 100%;
+}
+
+.neo-brutalism .setting_group:nth-of-type(even) {
+    background: var(--neo-pink);
+}
+
+.neo-brutalism .setting_title {
+    font-size: 1.8rem;
+    line-height: 1.2;
+}
+
+.neo-brutalism .section_divider {
+    width: 100%;
+    max-width: 350px;
+}
+
+.neo-brutalism .sns_login > p {
+    color: var(--neo-ink);
+    white-space: normal;
+}
+
+.neo-brutalism .sns_list {
+    flex-wrap: wrap;
+}
+
+.neo-brutalism .sns_list a {
+    border: 2px solid var(--neo-ink);
+    background: #ffffff;
+    box-shadow: 3px 3px 0 var(--neo-ink);
+}
+
+.neo-brutalism .sns_list img {
+    width: 100%;
+    height: 100%;
+}
+
+.neo-brutalism :focus-visible,
+.neo-brutalism input:focus-visible {
+    outline: 3px solid #a80023;
+    outline-offset: 3px;
+}
+
+.neo-brutalism .check:focus-visible + span,
+.neo-brutalism .toggle_check:focus-visible + span {
+    outline: 3px solid #a80023;
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    #wrap.neo-brutalism {
+        min-height: calc(100dvh - 24px);
+        padding: 18px;
+        box-shadow: 5px 5px 0 var(--neo-ink);
+    }
+
+    .neo-brutalism .login_option,
+    .neo-brutalism .login_link {
+        flex-wrap: wrap;
+        height: auto;
+        gap: 12px;
+    }
+
+    .neo-brutalism .reset_btn,
+    .neo-brutalism .join_btn {
+        margin-top: 48px;
+    }
+}
