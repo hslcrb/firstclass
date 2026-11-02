@@ -1,0 +1,279 @@
+:root {
+    --aero-ink: #123c52;
+    --aero-blue: #087eb1;
+    --aero-border: #75bdce;
+    --aero-white: #ffffff;
+}
+
+html {
+    min-width: 0;
+    overflow-x: visible;
+}
+
+body.style-page {
+    --primary: var(--aero-ink);
+    --text: var(--aero-ink);
+    --bg: transparent;
+    --dark-navy: var(--aero-ink);
+    --navy: var(--aero-ink);
+    --accent-blue: var(--aero-blue);
+    --blue-gray: #315b6c;
+    min-width: 0;
+    min-height: 100dvh;
+    padding: 32px 18px;
+    color: var(--aero-ink);
+    background-color: #b8e9fa;
+    background-image:
+        radial-gradient(circle at 12% 31%, rgb(255 255 255 / 90%) 0 2px, rgb(255 255 255 / 15%) 3px 21px, rgb(255 255 255 / 75%) 22px 23px, transparent 25px),
+        radial-gradient(circle at 86% 24%, rgb(255 255 255 / 95%) 0 3px, rgb(207 249 255 / 20%) 4px 36px, rgb(255 255 255 / 80%) 37px 39px, transparent 41px),
+        radial-gradient(circle at 91% 48%, rgb(255 255 255 / 90%) 0 2px, rgb(207 249 255 / 18%) 3px 16px, rgb(255 255 255 / 80%) 17px 18px, transparent 20px),
+        radial-gradient(ellipse 95% 28% at 20% 105%, #51b322 0 56%, transparent 57%),
+        radial-gradient(ellipse 100% 30% at 90% 108%, #80cf35 0 58%, transparent 59%),
+        radial-gradient(ellipse 23% 9% at 20% 19%, rgb(255 255 255 / 85%), transparent 72%),
+        radial-gradient(ellipse 28% 8% at 75% 12%, rgb(255 255 255 / 90%), transparent 72%),
+        linear-gradient(180deg, #45b7eb 0%, #a2e6fb 50%, #e4fbfd 75%, #b5e975 100%);
+    background-attachment: fixed;
+}
+
+.style-page #wrap {
+    position: relative;
+    width: 100%;
+    max-width: 660px;
+    min-width: 0;
+    min-height: calc(100dvh - 64px);
+    margin: 0 auto;
+    padding: clamp(18px, 5vw, 36px);
+    border: 1px solid rgb(255 255 255 / 95%);
+    border-radius: 24px;
+    color: var(--aero-ink);
+    background:
+        radial-gradient(circle at 90% 130px, rgb(255 255 255 / 95%) 0 3px, rgb(107 216 239 / 12%) 4px 28px, rgb(84 186 215 / 35%) 29px 30px, transparent 32px),
+        radial-gradient(circle at 8% 260px, rgb(255 255 255 / 95%) 0 2px, rgb(107 216 239 / 10%) 3px 18px, rgb(84 186 215 / 30%) 19px 20px, transparent 22px),
+        linear-gradient(155deg, rgb(255 255 255 / 97%), rgb(235 252 255 / 94%));
+    box-shadow: 0 0 0 1px rgb(56 133 161 / 60%), 0 16px 38px rgb(13 89 118 / 30%), inset 0 2px 0 #ffffff;
+}
+
+.style-page header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 58px;
+    height: auto;
+    padding: 12px 48px;
+    border: 1px solid #6db9ce;
+    border-radius: 15px;
+    background: linear-gradient(180deg, #ffffff 0%, #e6fbff 47%, #c5edf7 48%, #e7fcff 100%);
+    box-shadow: inset 0 1px 0 #ffffff, 0 3px 8px rgb(35 125 155 / 20%);
+}
+
+.style-page header h1 {
+    color: #124a65;
+    line-height: 1.25;
+    text-align: center;
+    text-shadow: 0 1px 0 #ffffff;
+}
+
+.style-page .prev_btn {
+    left: 0;
+}
+
+.style-page .close_btn {
+    right: 0;
+}
+
+.style-page main {
+    width: 100%;
+    padding: 34px 0 20px;
+    color: var(--aero-ink);
+    background: transparent;
+}
+
+.style-page .title {
+    gap: 10px;
+    line-height: 1.2;
+    color: #07577d;
+    text-shadow: 0 1px 0 #ffffff;
+}
+
+.style-page .title > span {
+    line-height: 1.2;
+}
+
+.style-page .title > span:last-child {
+    font-size: clamp(2.8rem, 6vw, 3.8rem);
+}
+
+.style-page .intro {
+    min-height: 0;
+    margin-bottom: 30px;
+}
+
+.style-page .intro:has(.welcome_img) {
+    padding-right: min(25%, 115px);
+}
+
+.style-page .welcome_img {
+    top: 0;
+    right: 0;
+    width: min(23%, 100px);
+    height: auto;
+}
+
+.style-page .description,
+.style-page .pw_notice,
+.style-page .night_notice {
+    color: #315b6c;
+    line-height: 1.5;
+}
+
+.style-page input[type="email"],
+.style-page input[type="password"] {
+    min-width: 0;
+    min-height: 54px;
+    border: 1px solid #7eb8c9;
+    border-radius: 10px;
+    color: #123c52;
+    background: linear-gradient(180deg, #f3fcff, #ffffff 35%);
+    box-shadow: inset 0 2px 5px rgb(34 105 132 / 16%), 0 1px 0 #ffffff;
+}
+
+.style-page input::placeholder {
+    color: #4b6977;
+}
+
+.style-page input[aria-invalid="true"] {
+    border: 2px solid #b4233e;
+}
+
+.style-page .error_message,
+.style-page .pw_error {
+    color: #a50029;
+}
+
+.style-page .login_btn,
+.style-page .reset_btn,
+.style-page .join_btn {
+    min-height: 54px;
+    height: auto;
+    padding: 12px 20px;
+    border: 1px solid #07547a;
+    border-radius: 999px;
+    color: #ffffff;
+    background: linear-gradient(180deg, #6cdbf1 0%, #0788b7 47%, #006a9e 50%, #0382b1 100%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 95%), inset 0 -2px 4px rgb(0 45 78 / 35%), 0 3px 7px rgb(0 76 110 / 30%);
+    text-shadow: 0 1px 2px #003d61;
+}
+
+.style-page .login_btn:not(:disabled):hover,
+.style-page .reset_btn:not(:disabled):hover,
+.style-page .join_btn:not(:disabled):hover {
+    background: linear-gradient(180deg, #b9f8ff 0%, #21aed0 47%, #0785b5 50%, #19a5c9 100%);
+}
+
+.style-page .login_btn:not(:disabled):active,
+.style-page .reset_btn:not(:disabled):active,
+.style-page .join_btn:not(:disabled):active {
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 6px rgb(0 48 75 / 40%);
+}
+
+.style-page .login_btn:disabled,
+.style-page .reset_btn:disabled,
+.style-page .join_btn:disabled {
+    border-color: #9baeb5;
+    color: #384b52;
+    background: linear-gradient(180deg, #f4f7f8, #d7e2e5);
+    box-shadow: inset 0 1px 0 #ffffff;
+    text-shadow: none;
+    opacity: 100%;
+}
+
+.style-page .terms_all,
+.style-page .agree_all,
+.style-page .setting_group {
+    padding: 16px;
+    border: 1px solid #a5d8e4;
+    border-radius: 15px;
+    background: linear-gradient(180deg, #ffffff, #e4f8fc);
+    box-shadow: inset 0 1px 0 #ffffff, 0 3px 8px rgb(24 115 140 / 10%);
+}
+
+.style-page .setting_title {
+    color: #07577d;
+    line-height: 1.3;
+}
+
+.style-page .section_divider {
+    width: 100%;
+    max-width: 350px;
+}
+
+.style-page .sns_login > p {
+    color: #315b6c;
+    white-space: normal;
+}
+
+.style-page .sns_list {
+    flex-wrap: wrap;
+}
+
+.style-page .sns_list a {
+    border-radius: 50%;
+    box-shadow: 0 2px 7px rgb(20 110 136 / 25%);
+}
+
+.style-page .marketing_title,
+.style-page .marketing_list span {
+    line-height: 1.4;
+}
+
+.style-page .frameBox {
+    width: min(100%, 500px);
+    min-height: 320px;
+    height: auto;
+    padding: 12px;
+    border: 1px solid #75bdce;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #ffffff, #d8f7ff);
+    box-shadow: 0 10px 25px rgb(13 89 118 / 25%);
+}
+
+.style-page .frameBox > .item {
+    padding: 16px;
+    border: 1px solid #8ccddd;
+    border-radius: 12px;
+    color: #123c52;
+    background: linear-gradient(180deg, #ffffff, #c9f2fa);
+}
+
+.style-page :focus-visible,
+.style-page input:focus-visible,
+.style-page .check:focus-visible + span,
+.style-page .toggle_check:focus-visible + span {
+    outline: 3px solid #005ba5;
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    body.style-page {
+        padding: 12px;
+    }
+
+    .style-page #wrap {
+        min-height: calc(100dvh - 24px);
+        padding: 18px;
+    }
+
+    .style-page .login_option,
+    .style-page .login_link {
+        flex-wrap: wrap;
+        height: auto;
+        gap: 12px;
+    }
+
+    .style-page .reset_btn,
+    .style-page .join_btn {
+        margin-top: 48px;
+    }
+}

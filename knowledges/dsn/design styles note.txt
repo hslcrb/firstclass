@@ -86,3 +86,9 @@
  20 Isometric
  - 비스듬한 각도에서 내려다본 3D 평면처럼 보이게 하는 스타일, 게임맵이나 일러스트에서 많이 사용
  - rotate(-30deg) skewX(30deg) scaleY(.86) 조합, box-shadow를 여러 겹 쌓아서 두께 표현
+
+ 21 Frutiger Aero
+ - 2000년대 중반부터 2010년대 초반에 널리 보인, 자연과 기술의 낙관적인 미래를 표현한 디자인 스타일
+ - 푸른 하늘과 물, 초록 잔디, 물방울과 비눗방울, 투명한 유리와 선명한 자연 이미지가 특징
+ - 광택이 있는 입체 버튼, 둥근 모서리, 빛 반사와 그라디언트, 실물을 닮은 스큐어모피즘을 활용
+ - 참고: https://cari.institute/aesthetics/frutiger-aero / https://uwaterloo.ca/computer-museum/exhibits/frutiger-aero-future-2000s
