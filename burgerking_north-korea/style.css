@@ -338,3 +338,19 @@ body.style-page {
         margin-top: 48px;
     }
 }
+
+/* 원본 화면의 서체 변수와 입력·본문 요소를 조선글 서체로 통일한다. */
+body.style-page {
+    --font: "Title Myongjo", "Long Gothic", sans-serif;
+    --font-pre: "Title Myongjo", "Long Gothic", sans-serif;
+    --font-BKR: "Chonrima Heavy", "Long Gothic", sans-serif;
+    font-family: "Title Myongjo", "Long Gothic", sans-serif;
+}
+
+.style-page :is(a, button, input, textarea, select, label, p, li, span, legend) {
+    font-family: "Title Myongjo", "Long Gothic", sans-serif;
+}
+
+.style-page .title > span {
+    font-family: "Chonrima Heavy", "Title Myongjo", sans-serif;
+}

@@ -366,7 +366,7 @@ body.style-page {
 }
 
 .style-page #wrap::before {
-    content: "★\\A 봉사\\A 안내";
+    content: "★\A 봉사\A 안내";
     grid-area: poster;
     position: sticky;
     top: 24px;
@@ -487,4 +487,36 @@ body.style-page {
     .style-page .title > span:last-child {
         font-size: clamp(3.8rem, 9vw, 5.4rem);
     }
+}
+
+/* 원본 화면의 서체 변수와 입력·본문 요소를 조선글 서체로 통일한다. */
+body.style-page {
+    --font: "Title Myongjo", "Long Gothic", sans-serif;
+    --font-pre: "Title Myongjo", "Long Gothic", sans-serif;
+    --font-BKR: "Chonrima Heavy", "Long Gothic", sans-serif;
+    font-family: "Title Myongjo", "Long Gothic", sans-serif;
+}
+
+.style-page :is(a, button, input, textarea, select, label, p, li, span, legend) {
+    font-family: "Title Myongjo", "Long Gothic", sans-serif;
+}
+
+/* 2번: 제목·단추는 붓글체, 일반 문구는 업로드한 제목명조체. */
+body.style-page {
+    --font: "Title Myongjo", "Long Gothic", sans-serif;
+    --font-pre: "Title Myongjo", "Long Gothic", sans-serif;
+    --font-BKR: "Bukgul", "Title Myongjo", sans-serif;
+}
+
+.style-page :is(.email_label, .pw_label, .setting_title) {
+    font-family: "Title Myongjo", "Long Gothic", sans-serif;
+}
+
+.style-page header h1,
+.style-page .title,
+.style-page .title > span,
+.style-page #wrap::before,
+.style-page :is(.login_btn, .reset_btn, .join_btn) {
+    font-family: "Bukgul", "Title Myongjo", sans-serif;
+    font-weight: normal;
 }
