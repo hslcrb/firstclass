@@ -1,0 +1,364 @@
+:root {
+    --club-ink: #321610;
+    --club-red: #821a1f;
+    --club-deep-red: #4d1117;
+    --club-gold: #d8a83f;
+    --club-cream: #f4e8ca;
+    --club-paper: #ead9b2;
+}
+
+html {
+    min-width: 0;
+    overflow-x: visible;
+}
+
+body.style-page {
+    --primary: var(--club-ink);
+    --text: #57362a;
+    --bg: transparent;
+    --dark-navy: var(--club-ink);
+    --navy: var(--club-deep-red);
+    --accent-blue: var(--club-red);
+    --blue-gray: #654b38;
+    min-width: 0;
+    min-height: 100dvh;
+    padding: clamp(14px, 3vw, 36px);
+    color: var(--club-ink);
+    font-family: "Pretendard Variable", "Malgun Gothic", sans-serif;
+    background-color: #3e1015;
+    background-image: repeating-linear-gradient(90deg, rgb(255 224 167 / 3%) 0 1px, transparent 1px 8px), linear-gradient(130deg, #681b20, #350c10 65%, #5e201b);
+}
+
+.style-page #wrap {
+    display: grid;
+    grid-template-areas:
+        "masthead artwork"
+        "heading artwork"
+        "content artwork";
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    grid-template-rows: auto auto 1fr;
+    column-gap: clamp(24px, 4vw, 56px);
+    width: 100%;
+    max-width: 1120px;
+    min-width: 0;
+    min-height: calc(100dvh - 72px);
+    margin: 0 auto;
+    padding: clamp(20px, 4vw, 48px);
+    border: 6px double #9b742d;
+    border-radius: 0;
+    color: var(--club-ink);
+    background-color: var(--club-cream);
+    background-image: repeating-linear-gradient(0deg, rgb(113 76 30 / 3%) 0 1px, transparent 1px 5px);
+    box-shadow: 0 16px 50px rgb(0 0 0 / 35%), inset 0 0 0 2px #f8efd8;
+}
+
+.style-page #wrap::after {
+    content: "종로 음악살롱  ✦  1970s";
+    grid-area: masthead;
+    display: block;
+    padding: 10px 12px;
+    border-top: 3px solid var(--club-red);
+    border-bottom: 1px solid var(--club-red);
+    color: var(--club-red);
+    font-family: "Batang", "바탕", serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-align: center;
+}
+
+.style-page #wrap::before {
+    content: "";
+    grid-area: artwork;
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    display: block;
+    width: 100%;
+    height: min(74vh, 720px);
+    min-height: 440px;
+    border: 8px solid #78201f;
+    outline: 2px solid var(--club-gold);
+    outline-offset: -14px;
+    background: #421513 url("jongno-stage.webp") center / cover no-repeat;
+    box-shadow: 10px 10px 0 #c99d43;
+}
+
+.style-page header {
+    grid-area: heading;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 62px;
+    height: auto;
+    margin-top: 18px;
+    padding: 14px 50px;
+    border: 2px solid var(--club-red);
+    color: var(--club-red);
+    background: #f9eed2;
+}
+
+.style-page header h1 {
+    font-family: "Batang", "바탕", "Times New Roman", serif;
+    font-size: clamp(1.8rem, 2vw, 2.4rem);
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.style-page .prev_btn {
+    left: 0;
+}
+
+.style-page .close_btn {
+    right: 0;
+}
+
+.style-page main {
+    grid-area: content;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 38px 0 18px;
+    color: var(--club-ink);
+    background: transparent;
+}
+
+.style-page .title {
+    gap: 8px;
+    margin-bottom: 36px;
+    color: var(--club-red);
+    font-family: "Batang", "바탕", "Times New Roman", serif;
+    line-height: 1.1;
+}
+
+.style-page .title > span {
+    line-height: 1.2;
+}
+
+.style-page .title > span:first-child {
+    font-size: clamp(1.8rem, 2.1vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.style-page .title > span:last-child {
+    font-size: clamp(3.2rem, 4vw, 5.4rem);
+    font-weight: 900;
+    letter-spacing: -0.08em;
+    text-shadow: 2px 2px 0 var(--club-cream), 3px 3px 0 #c59b4b;
+}
+
+.style-page .intro {
+    min-height: 0;
+    margin-bottom: 30px;
+}
+
+.style-page .intro .title {
+    margin-bottom: 0;
+}
+
+.style-page .intro:has(.welcome_img) {
+    padding-right: min(22%, 100px);
+}
+
+.style-page .welcome_img {
+    top: 0;
+    right: 0;
+    width: min(21%, 90px);
+    height: auto;
+    filter: sepia(100%);
+    opacity: 75%;
+}
+
+.style-page .description,
+.style-page .pw_notice,
+.style-page .night_notice {
+    color: #5b4030;
+    line-height: 1.6;
+}
+
+.style-page .email_label,
+.style-page .pw_label,
+.style-page .setting_title {
+    color: var(--club-red);
+    font-family: "Pretendard Variable", "Malgun Gothic", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.style-page input[type="email"],
+.style-page input[type="password"] {
+    min-width: 0;
+    min-height: 54px;
+    border: 2px solid #947249;
+    border-radius: 0;
+    color: #30190f;
+    background: #fff9e8;
+    box-shadow: inset 3px 3px 0 rgb(117 74 27 / 10%);
+}
+
+.style-page input::placeholder {
+    color: #705646;
+}
+
+.style-page input[aria-invalid="true"] {
+    border-color: #a3151e;
+}
+
+.style-page .error_message,
+.style-page .pw_error {
+    color: #a3151e;
+}
+
+.style-page .login_btn,
+.style-page .reset_btn,
+.style-page .join_btn {
+    min-height: 56px;
+    height: auto;
+    padding: 12px 20px;
+    border: 3px double #f2d180;
+    border-radius: 0;
+    color: #fff8e3;
+    background: var(--club-red);
+    box-shadow: 5px 5px 0 #c99d43;
+    font-family: "Batang", "바탕", serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+}
+
+.style-page .login_btn:not(:disabled):hover,
+.style-page .reset_btn:not(:disabled):hover,
+.style-page .join_btn:not(:disabled):hover {
+    background: var(--club-deep-red);
+}
+
+.style-page .login_btn:not(:disabled):active,
+.style-page .reset_btn:not(:disabled):active,
+.style-page .join_btn:not(:disabled):active {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 #c99d43;
+}
+
+.style-page .login_btn:disabled,
+.style-page .reset_btn:disabled,
+.style-page .join_btn:disabled {
+    border-color: #897865;
+    color: #493a30;
+    background: #cdbfa7;
+    box-shadow: 5px 5px 0 #a99773;
+    opacity: 100%;
+}
+
+.style-page .terms_all,
+.style-page .agree_all,
+.style-page .setting_group {
+    padding: 18px;
+    border: 1px solid #b38a4a;
+    border-top: 4px solid var(--club-red);
+    background: #f9efd8;
+}
+
+.style-page .terms_list {
+    margin-top: 26px;
+}
+
+.style-page .login_option,
+.style-page .login_link {
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.style-page .section_divider {
+    width: 100%;
+    max-width: 350px;
+}
+
+.style-page .sns_login {
+    margin-top: 52px;
+}
+
+.style-page .sns_login > p {
+    color: #654b38;
+    white-space: normal;
+}
+
+.style-page .sns_list {
+    flex-wrap: wrap;
+}
+
+.style-page .sns_list a {
+    border: 2px solid #a17c43;
+    background: #fff9e8;
+}
+
+.style-page .marketing_title,
+.style-page .marketing_list span {
+    line-height: 1.4;
+}
+
+.style-page .frameBox {
+    width: min(100%, 600px);
+    min-height: 320px;
+    height: auto;
+    padding: 18px;
+    border: 6px double #d8a83f;
+    background: #f4e8ca;
+    box-shadow: 10px 10px 0 #821a1f;
+}
+
+.style-page .frameBox > .item {
+    padding: 16px;
+    border: 1px solid #b38a4a;
+    color: #321610;
+    background: #f9efd8;
+}
+
+.style-page :focus-visible,
+.style-page input:focus-visible,
+.style-page .check:focus-visible + span,
+.style-page .toggle_check:focus-visible + span {
+    outline: 3px solid #004f91;
+    outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+    body.style-page {
+        padding: 12px;
+    }
+
+    .style-page #wrap {
+        grid-template-areas:
+            "masthead"
+            "artwork"
+            "heading"
+            "content";
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto auto 1fr;
+        min-height: calc(100dvh - 24px);
+        padding: 18px;
+    }
+
+    .style-page #wrap::before {
+        position: relative;
+        top: auto;
+        height: clamp(190px, 52vw, 300px);
+        min-height: 0;
+        margin-top: 18px;
+        box-shadow: 6px 6px 0 #c99d43;
+    }
+
+    .style-page .title > span:last-child {
+        font-size: clamp(3.2rem, 8vw, 4.8rem);
+    }
+
+    .style-page .reset_btn,
+    .style-page .join_btn {
+        margin-top: 48px;
+    }
+}
