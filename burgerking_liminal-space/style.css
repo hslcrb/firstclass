@@ -1,0 +1,291 @@
+:root {
+    --liminal-ink: #20291f;
+    --liminal-paper: #e8e8d7;
+    --liminal-line: #8a9374;
+    --liminal-accent: #3b5037;
+}
+
+html {
+    min-width: 0;
+    overflow-x: visible;
+}
+
+body.style-page {
+    --primary: var(--liminal-ink);
+    --text: var(--liminal-ink);
+    --bg: transparent;
+    --dark-navy: var(--liminal-ink);
+    --navy: var(--liminal-ink);
+    --accent-blue: var(--liminal-accent);
+    --blue-gray: #455344;
+    min-width: 0;
+    min-height: 100dvh;
+    padding: 32px 20px;
+    color: var(--liminal-ink);
+    font-family: "Pretendard Variable", "Malgun Gothic", sans-serif;
+    background-color: #687260;
+    background-image: linear-gradient(rgb(38 48 34 / 35%), rgb(26 35 26 / 56%)), url("hallway.webp");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.style-page #wrap {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    min-width: 0;
+    min-height: calc(100dvh - 64px);
+    margin: 0 auto;
+    padding: clamp(18px, 5vw, 34px);
+    border: 1px solid #c5cbb0;
+    border-radius: 0;
+    color: var(--liminal-ink);
+    background: linear-gradient(180deg, rgb(237 238 221 / 98%), rgb(220 225 207 / 98%));
+    box-shadow: 0 0 0 8px rgb(24 34 23 / 34%), 0 20px 60px rgb(0 0 0 / 40%);
+}
+
+.style-page #wrap::before {
+    content: "";
+    display: block;
+    height: clamp(160px, 31vw, 230px);
+    margin-bottom: 16px;
+    border: 1px solid #727b66;
+    background: linear-gradient(rgb(61 73 54 / 15%), rgb(37 46 32 / 22%)), url("hallway.webp") center 53% / cover;
+    box-shadow: inset 0 0 35px rgb(17 25 18 / 40%);
+}
+
+.style-page header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    height: auto;
+    padding: 12px 48px;
+    border-top: 5px solid #344634;
+    border-bottom: 1px solid #8e9980;
+    background: #d4ddc9;
+}
+
+.style-page header h1 {
+    color: #1c2b1b;
+    font-family: "Pretendard Variable", "Malgun Gothic", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    line-height: 1.3;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.style-page .prev_btn {
+    left: 0;
+}
+
+.style-page .close_btn {
+    right: 0;
+}
+
+.style-page main {
+    width: 100%;
+    padding: 38px 0 20px;
+    color: var(--liminal-ink);
+    background: transparent;
+}
+
+.style-page .title {
+    gap: 12px;
+    color: #202d20;
+    font-family: "Pretendard Variable", "Malgun Gothic", sans-serif;
+    letter-spacing: -0.045em;
+    line-height: 1.14;
+}
+
+.style-page .title > span {
+    line-height: 1.16;
+}
+
+.style-page .title > span:first-child {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.style-page .title > span:last-child {
+    font-size: clamp(3rem, 6.5vw, 4.4rem);
+    font-weight: 900;
+    text-shadow: 1px 1px 0 #f7f9e9, 2px 2px 0 #a7b09a;
+}
+
+.style-page .intro {
+    min-height: 0;
+    margin-bottom: 30px;
+}
+
+.style-page .intro:has(.welcome_img) {
+    padding-right: min(24%, 110px);
+}
+
+.style-page .welcome_img {
+    top: 0;
+    right: 0;
+    width: min(22%, 90px);
+    height: auto;
+    filter: grayscale(100%);
+    opacity: 75%;
+}
+
+.style-page .description,
+.style-page .pw_notice,
+.style-page .night_notice {
+    color: #455344;
+    line-height: 1.5;
+}
+
+.style-page .email_label,
+.style-page .pw_label,
+.style-page .setting_title {
+    color: #344634;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.style-page input[type="email"],
+.style-page input[type="password"] {
+    min-width: 0;
+    min-height: 54px;
+    border: 1px solid #7d8a73;
+    border-radius: 0;
+    color: #1d2b20;
+    background: #fbfcf1;
+    box-shadow: inset 0 2px 5px rgb(42 53 36 / 14%);
+}
+
+.style-page input::placeholder {
+    color: #586655;
+}
+
+.style-page input[aria-invalid="true"] {
+    border: 2px solid #9b2428;
+}
+
+.style-page .error_message,
+.style-page .pw_error {
+    color: #941a25;
+}
+
+.style-page .login_btn,
+.style-page .reset_btn,
+.style-page .join_btn {
+    min-height: 56px;
+    height: auto;
+    padding: 12px 20px;
+    border: 2px solid #263526;
+    border-radius: 0;
+    color: #ffffff;
+    background: #344b37;
+    box-shadow: 5px 5px 0 #a8b49a;
+    font-family: "Pretendard Variable", "Malgun Gothic", sans-serif;
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.style-page .login_btn:not(:disabled):hover,
+.style-page .reset_btn:not(:disabled):hover,
+.style-page .join_btn:not(:disabled):hover {
+    background: #203923;
+}
+
+.style-page .login_btn:disabled,
+.style-page .reset_btn:disabled,
+.style-page .join_btn:disabled {
+    border-color: #899483;
+    color: #3c483b;
+    background: #c3ccba;
+    box-shadow: 5px 5px 0 #a8b49a;
+    opacity: 100%;
+}
+
+.style-page .terms_all,
+.style-page .agree_all,
+.style-page .setting_group {
+    padding: 16px;
+    border: 1px solid #a6b09b;
+    border-left: 5px solid #718369;
+    background: #f0f2e5;
+}
+
+.style-page .section_divider {
+    width: 100%;
+    max-width: 350px;
+}
+
+.style-page .sns_login > p {
+    color: #455344;
+    white-space: normal;
+}
+
+.style-page .sns_list {
+    flex-wrap: wrap;
+}
+
+.style-page .sns_list a {
+    border: 1px solid #98a593;
+    background: #f6f8ed;
+}
+
+.style-page .marketing_title,
+.style-page .marketing_list span {
+    line-height: 1.4;
+}
+
+.style-page .frameBox {
+    width: min(100%, 500px);
+    min-height: 320px;
+    height: auto;
+    border: 1px solid #a6b09b;
+    background: #e8e8d7;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
+}
+
+.style-page .frameBox > .item {
+    padding: 16px;
+    border: 1px solid #a6b09b;
+    color: #20291f;
+    background: #f0f2e5;
+}
+
+.style-page :focus-visible,
+.style-page input:focus-visible,
+.style-page .check:focus-visible + span,
+.style-page .toggle_check:focus-visible + span {
+    outline: 3px solid #004f91;
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    body.style-page {
+        padding: 12px;
+        background-attachment: scroll;
+    }
+
+    .style-page #wrap {
+        min-height: calc(100dvh - 24px);
+        padding: 18px;
+    }
+
+    .style-page .login_option,
+    .style-page .login_link {
+        flex-wrap: wrap;
+        height: auto;
+        gap: 12px;
+    }
+
+    .style-page .reset_btn,
+    .style-page .join_btn {
+        margin-top: 48px;
+    }
+}
