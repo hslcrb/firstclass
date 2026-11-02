@@ -634,3 +634,10 @@ body.style-page {
     font-family: "조선 붓글", "Title Myongjo", "조선 광명", serif;
     font-weight: 400;
 }
+
+/* 원래 배경 이미지로 제공된 간편 접속 상징을 복원한다. */
+.style-page .sns_list > a { background-color: #fff; background-repeat: no-repeat; background-position: center; background-size: contain; }
+.style-page .sns_list > a:first-child { background-image: url("images/kakaotalk.svg"); }
+.style-page .sns_list > a:nth-child(2) { background-image: url("images/naver.svg"); }
+.style-page .sns_list > a:nth-child(3) { background-image: url("images/apple.svg"); }
+.style-page .sns_list > a:last-child { background-image: url("images/samsungcard.svg"); }
