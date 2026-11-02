@@ -1,0 +1,490 @@
+@font-face {
+    font-family: "Chonrima Heavy";
+    src: url("../fonts/north-korea/pnpcheonrimache-ub.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Chonrima Bold";
+    src: url("../fonts/north-korea/pnpcheonrimache-sb.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Bukgul";
+    src: url("../fonts/north-korea/pwksbume.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Chongbong";
+    src: url("../fonts/north-korea/pwkschme.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Long Gothic";
+    src: url("../fonts/north-korea/pwkslgme.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Title Chong";
+    src: url("../fonts/north-korea/pwkstcme.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Title Myongjo";
+    src: url("../fonts/north-korea/pwkstmme.woff2") format("woff2");
+    font-display: swap;
+}
+
+:root {
+    --poster-red: #a71d22;
+    --poster-dark: #731319;
+    --poster-gold: #f4cc55;
+    --poster-paper: #f2e5bf;
+    --poster-ink: #282018;
+}
+
+html {
+    min-width: 0;
+    overflow-x: visible;
+}
+
+body.style-page {
+    --primary: var(--poster-ink);
+    --text: #4b3b2b;
+    --bg: transparent;
+    --dark-navy: var(--poster-ink);
+    --navy: var(--poster-red);
+    --accent-blue: var(--poster-red);
+    --blue-gray: #554333;
+    min-width: 0;
+    min-height: 100dvh;
+    padding: clamp(16px, 3vw, 32px);
+    color: var(--poster-ink);
+    font-family: "Long Gothic", "Malgun Gothic", sans-serif;
+    background-color: var(--poster-dark);
+    background-image: repeating-linear-gradient(115deg, rgb(255 223 146 / 4%) 0 2px, transparent 2px 8px);
+}
+
+.style-page #wrap {
+    width: 100%;
+    max-width: 900px;
+    min-width: 0;
+    min-height: calc(100dvh - 64px);
+    margin: 0 auto;
+    padding: clamp(18px, 4vw, 40px);
+    border: 6px solid var(--poster-ink);
+    border-radius: 0;
+    color: var(--poster-ink);
+    background: var(--poster-paper);
+    box-shadow: 8px 8px 0 #d0a342;
+}
+
+.style-page #wrap::before {
+    content: "★  봉 사 안 내  ★";
+    display: block;
+    padding: clamp(28px, 5vw, 54px) 14px;
+    border: 4px solid var(--poster-ink);
+    color: var(--poster-gold);
+    background-color: var(--poster-red);
+    background-image: repeating-conic-gradient(from -10deg at 50% 120%, #c73530 0deg 12deg, #a71d22 12deg 24deg);
+    font-family: "Chonrima Heavy", "Malgun Gothic", sans-serif;
+    font-size: clamp(3.4rem, 7vw, 6.8rem);
+    line-height: 1.15;
+    text-align: center;
+    text-shadow: 3px 3px 0 #671015;
+}
+
+.style-page header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 58px;
+    height: auto;
+    margin-top: 12px;
+    padding: 12px 52px;
+    border: 3px solid var(--poster-ink);
+    color: #ffffff;
+    background: var(--poster-red);
+}
+
+.style-page header h1 {
+    color: #ffffff;
+    font-family: "Title Chong", "Malgun Gothic", sans-serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    line-height: 1.2;
+    text-align: center;
+}
+
+.style-page .prev_btn {
+    left: 0;
+    background-color: var(--poster-paper);
+}
+
+.style-page .close_btn {
+    right: 0;
+    background-color: var(--poster-paper);
+}
+
+.style-page main {
+    width: 100%;
+    padding: 34px 0 20px;
+    color: var(--poster-ink);
+    background: transparent;
+}
+
+.style-page .title {
+    gap: 8px;
+    margin-bottom: 32px;
+    color: var(--poster-red);
+    font-family: "Chonrima Heavy", "Malgun Gothic", sans-serif;
+    line-height: 1.15;
+}
+
+.style-page .title > span {
+    line-height: 1.2;
+}
+
+.style-page .title > span:first-child {
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+}
+
+.style-page .title > span:last-child {
+    font-size: clamp(3.4rem, 6vw, 5.6rem);
+    letter-spacing: -0.04em;
+    text-shadow: 2px 2px 0 #fff8e5, 4px 4px 0 #cda44f;
+}
+
+.style-page .intro {
+    min-height: 0;
+    margin-bottom: 28px;
+}
+
+.style-page .intro .title {
+    margin-bottom: 0;
+}
+
+.style-page .intro:has(.welcome_img) {
+    padding-right: min(22%, 100px);
+}
+
+.style-page .welcome_img {
+    top: 0;
+    right: 0;
+    width: min(20%, 90px);
+    height: auto;
+    filter: grayscale(100%);
+}
+
+.style-page .description,
+.style-page .pw_notice,
+.style-page .night_notice {
+    color: #4b3b2b;
+    line-height: 1.5;
+}
+
+.style-page .email_label,
+.style-page .pw_label,
+.style-page .setting_title {
+    color: var(--poster-red);
+    font-family: "Chonrima Bold", "Malgun Gothic", sans-serif;
+    font-size: 1.8rem;
+    line-height: 1.3;
+}
+
+.style-page input[type="email"],
+.style-page input[type="password"] {
+    min-width: 0;
+    min-height: 54px;
+    border: 3px solid var(--poster-ink);
+    border-radius: 0;
+    color: var(--poster-ink);
+    background: #fffdf2;
+    box-shadow: 4px 4px 0 #caa959;
+}
+
+.style-page input::placeholder {
+    color: #675642;
+}
+
+.style-page input[aria-invalid="true"] {
+    border-color: #ac0b18;
+}
+
+.style-page .error_message,
+.style-page .pw_error {
+    color: #a30a18;
+}
+
+.style-page .login_btn,
+.style-page .reset_btn,
+.style-page .join_btn {
+    min-height: 58px;
+    height: auto;
+    padding: 12px 20px;
+    border: 3px solid var(--poster-ink);
+    border-radius: 0;
+    color: #ffffff;
+    background: var(--poster-red);
+    box-shadow: 5px 5px 0 #bd9340;
+    font-family: "Chonrima Bold", "Malgun Gothic", sans-serif;
+    font-size: 2rem;
+}
+
+.style-page .login_btn:not(:disabled):hover,
+.style-page .reset_btn:not(:disabled):hover,
+.style-page .join_btn:not(:disabled):hover {
+    background: var(--poster-dark);
+}
+
+.style-page .login_btn:disabled,
+.style-page .reset_btn:disabled,
+.style-page .join_btn:disabled {
+    border-color: #817460;
+    color: #423b32;
+    background: #cfc3ae;
+    box-shadow: 5px 5px 0 #ae9b76;
+    opacity: 100%;
+}
+
+.style-page .terms_all,
+.style-page .agree_all,
+.style-page .setting_group {
+    padding: 16px;
+    border: 2px solid var(--poster-ink);
+    border-left: 8px solid var(--poster-red);
+    background: #fff7dd;
+}
+
+.style-page .terms_list {
+    margin-top: 28px;
+}
+
+.style-page .login_option,
+.style-page .login_link,
+.style-page .sns_list {
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.style-page .section_divider {
+    width: 100%;
+    max-width: 350px;
+}
+
+.style-page .sns_login > p {
+    color: #554333;
+    white-space: normal;
+}
+
+.style-page .sns_list a {
+    border: 2px solid var(--poster-ink);
+    background: #ffffff;
+}
+
+.style-page .marketing_title,
+.style-page .marketing_list span {
+    line-height: 1.4;
+}
+
+.style-page .frameBox {
+    width: min(100%, 500px);
+    min-height: 320px;
+    height: auto;
+    padding: 18px;
+    border: 4px solid #282018;
+    color: #282018;
+    background: #f2e5bf;
+}
+
+.style-page .frameBox > .item {
+    padding: 16px;
+    border: 1px solid #282018;
+    color: #282018;
+    background: #fff7dd;
+}
+
+.style-page :focus-visible,
+.style-page input:focus-visible,
+.style-page .check:focus-visible + span,
+.style-page .toggle_check:focus-visible + span {
+    outline: 3px solid #005394;
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    body.style-page {
+        padding: 12px;
+    }
+
+    .style-page #wrap {
+        min-height: calc(100dvh - 24px);
+        padding: 16px;
+    }
+
+    .style-page .login_option,
+    .style-page .login_link {
+        gap: 12px;
+    }
+
+    .style-page .reset_btn,
+    .style-page .join_btn {
+        margin-top: 48px;
+    }
+}
+
+/* 북조선 선전화의 붓글씨와 선명한 색채 */
+body.style-page {
+    --poster-red: #e0091b;
+    --poster-dark: #9d0917;
+    --poster-gold: #ffe347;
+    --poster-paper: #fff3cd;
+    --poster-ink: #142c52;
+    background-color: #d90018;
+    background-image: repeating-linear-gradient(135deg, rgb(255 220 56 / 12%) 0 3px, transparent 3px 16px);
+}
+
+.style-page #wrap {
+    display: grid;
+    grid-template-areas:
+        "poster heading"
+        "poster content";
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(20px, 4vw, 44px);
+    max-width: 1120px;
+    border: 7px solid #102d65;
+    background-color: #fff4ce;
+    background-image: linear-gradient(180deg, #ffffff 0 10px, #0561b6 10px 22px, #fff4ce 22px);
+    box-shadow: 10px 10px 0 #ffdc3b;
+}
+
+.style-page #wrap::before {
+    content: "★\\A 봉사\\A 안내";
+    grid-area: poster;
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 520px;
+    height: min(76vh, 760px);
+    padding: 24px;
+    border: 5px solid #102d65;
+    color: #ffe347;
+    background-color: #e0091b;
+    background-image: repeating-conic-gradient(from -8deg at 50% 70%, #f72a25 0deg 13deg, #c90019 13deg 26deg);
+    box-shadow: 7px 7px 0 #0870bd;
+    font-family: "Bukgul", "Chonrima Heavy", "Malgun Gothic", sans-serif;
+    font-size: clamp(5.6rem, 7.5vw, 9.4rem);
+    font-weight: normal;
+    line-height: 1.05;
+    text-align: center;
+    text-shadow: 4px 4px 0 #8c0714, 6px 6px 0 #102d65;
+    white-space: pre-line;
+}
+
+.style-page header {
+    grid-area: heading;
+    margin-top: 0;
+    border: 4px solid #102d65;
+    background: #d70b1e;
+    box-shadow: 5px 5px 0 #ffe347;
+}
+
+.style-page header h1 {
+    font-family: "Bukgul", "Chonrima Heavy", "Malgun Gothic", sans-serif;
+    font-size: clamp(2.4rem, 3vw, 3.4rem);
+    font-weight: normal;
+    letter-spacing: 0.02em;
+}
+
+.style-page main {
+    grid-area: content;
+    min-width: 0;
+    padding-top: 36px;
+}
+
+.style-page .title {
+    color: #c6001b;
+    font-family: "Bukgul", "Chonrima Heavy", "Malgun Gothic", sans-serif;
+    font-weight: normal;
+}
+
+.style-page .title > span:first-child {
+    font-size: clamp(2.3rem, 3vw, 3.1rem);
+}
+
+.style-page .title > span:last-child {
+    font-size: clamp(3.8rem, 5vw, 6.2rem);
+    font-weight: normal;
+    text-shadow: 2px 2px 0 #fff4ce, 4px 4px 0 #eebf2f, 6px 6px 0 #1761a2;
+}
+
+.style-page .email_label,
+.style-page .pw_label,
+.style-page .setting_title {
+    color: #0055a4;
+    font-family: "Chonrima Bold", "Malgun Gothic", sans-serif;
+}
+
+.style-page input[type="email"],
+.style-page input[type="password"] {
+    border: 3px solid #155191;
+    background: #ffffff;
+    box-shadow: 4px 4px 0 #f4ce41;
+}
+
+.style-page .login_btn,
+.style-page .reset_btn,
+.style-page .join_btn {
+    border: 3px solid #102d65;
+    color: #ffffff;
+    background: #d5001d;
+    box-shadow: 5px 5px 0 #f4ca2c;
+    font-family: "Bukgul", "Chonrima Bold", "Malgun Gothic", sans-serif;
+    font-size: 2.4rem;
+    font-weight: normal;
+}
+
+.style-page .terms_all,
+.style-page .agree_all,
+.style-page .setting_group {
+    border: 2px solid #155191;
+    border-left: 8px solid #e0091b;
+    background: #fffbea;
+}
+
+@media (max-width: 700px) {
+    .style-page #wrap {
+        grid-template-areas:
+            "poster"
+            "heading"
+            "content";
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto 1fr;
+        padding: 16px;
+    }
+
+    .style-page #wrap::before {
+        position: relative;
+        top: auto;
+        height: auto;
+        min-height: 210px;
+        margin-bottom: 18px;
+        padding: 18px;
+        font-size: clamp(4.8rem, 11vw, 7rem);
+        line-height: 1;
+    }
+
+    .style-page .title > span:last-child {
+        font-size: clamp(3.8rem, 9vw, 5.4rem);
+    }
+}

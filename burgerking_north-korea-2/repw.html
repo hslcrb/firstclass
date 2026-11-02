@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg">
+
+    <link rel="stylesheet" href="../fonts/stylesheet/BKBulMatPro.css">
+    <link rel="stylesheet" href="../fonts/stylesheet/SDGothicNeoRound.css">
+    <link rel="stylesheet" href="../fonts/stylesheet/pretendardvariable.css">
+    <link rel="stylesheet" href="../css/default.css">
+
+    <title>암호 다시 설정 | 버거킹</title>
+
+    <style>
+        :root {
+            --font: "SD Gothic Neo Round", "SDGothicNeoRound", sans-serif;
+            --font-pre: "Pretendard Variable", sans-serif;
+            --font-BKR: "BKBulMatPro", sans-serif;
+
+            /* 버거킹 색상 */
+            --primary: #512314;
+            --focus: #D62302;
+            --baseBorder: #D9CFC6;
+            --inputBg: #FFFCF9;
+            --errorColor: #C54734;
+            --placeholder: #EBE6E2;
+            --text: #766053;
+            --bg: #F4EBDC;
+            --button: #E9DDCD;
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            min-width: 360px;
+            font-family: var(--font);
+            font-size: 1.6rem;
+            color: var(--primary);
+            background-color: var(--bg);
+        }
+
+        #wrap {
+            width: 96%;
+            max-width: 1024px;
+            min-width: 360px;
+            min-height: 100dvh;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg);
+        }
+
+        header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 800;
+        }
+
+        .close_btn {
+            position: absolute;
+            top: 0;
+            right: -6px;
+            width: 48px;
+            height: 48px;
+            background: url("images/Close.svg") no-repeat center / 48px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-top: 32px;
+        }
+
+        .intro {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-family: var(--font-BKR);
+            line-height: 1;
+        }
+
+        .title > span:first-child {
+            font-size: 2rem;
+        }
+
+        .title > span:last-child {
+            font-size: 2.8rem;
+        }
+
+        .description {
+            margin-top: 10px;
+            font-family: var(--font-pre);
+            font-size: 1.6rem;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text);
+        }
+
+        form {
+            display: flex;
+            width: 100%;
+        }
+
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .password_group {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .pw_label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.5rem;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .password_fields {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .input_box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex: 1 1 auto;
+            width: 100%;
+            min-width: 0;
+        }
+
+        input[type="password"] {
+            flex: 1 1 auto;
+            width: 100%;
+            min-width: 0;
+            height: 50px;
+            padding: 0 52px 0 16px;
+            border: 1px solid var(--baseBorder);
+            border-radius: 10px;
+            background-color: rgba(255, 252, 249, 0.98);
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        input[type="password"]::placeholder {
+            color: var(--placeholder);
+        }
+
+        input[type="password"]:focus-visible {
+            border-color: var(--focus);
+            outline: none;
+        }
+
+        .pw_btn {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            width: 26px;
+            height: 26px;
+            transform: translateY(-50%);
+            background: url("images/Eye Closed.svg") no-repeat center / 26px;
+        }
+
+        .pw_error {
+            margin: 6px 0 0 6px;
+            font-family: var(--font-pre);
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--errorColor);
+        }
+
+        .pw_check {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            margin-top: 12px;
+            padding-left: 6px;
+        }
+
+        .pw_check li {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-family: var(--font-pre);
+            font-size: 1.4rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .pw_check li span {
+            color: var(--text);
+            opacity: 40%;
+        }
+
+        .pw_check li::before {
+            content: "";
+            flex: 0 0 12px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary);
+            mask: url("images/Check-Small Disabled.svg") no-repeat center / contain;
+            /*이미 본 아이콘 자체가 30% 투명도 버전임. opacity: 30%; */
+        }
+
+        .pw_notice_box {
+            display: flex;
+            width: 100%;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(81, 35, 20, 0.2);
+        }
+
+        .pw_notice {
+            flex: 1 1 auto;
+            width: 100%;
+            min-width: 0;
+            font-family: var(--font-pre);
+            font-size: 1.4rem;
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--text);
+        }
+
+        .sns_notice {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+            margin-top: 54px;
+            font-family: var(--font-pre);
+            font-size: 1.4rem;
+            line-height: 1.2;
+            color: var(--text);
+        }
+
+        .sns_notice_title {
+            width: 100%;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .sns_notice_text {
+            flex: 1 1 auto;
+            width: 100%;
+            min-width: 0;
+            font-weight: 500;
+        }
+
+        .reset_btn {
+            flex: 0 0 auto;
+            width: 100%;
+            height: 44px;
+            margin-top: 24px;
+            border-radius: 999px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--placeholder);
+            background-color: var(--primary);
+        }
+
+        .reset_btn:disabled {
+            opacity: 20%;
+            cursor: default;
+        }
+
+        @media (min-width: 600px) {
+            #wrap {
+                min-height: 844px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="style-page">
+    <div id="wrap">
+        <header>
+            <h1>암호 다시 설정</h1>
+
+            <button type="button" class="close_btn">
+                <span class="sr-only">닫기</span>
+            </button>
+        </header>
+
+        <main>
+            <div class="intro">
+                <h2 class="title">
+                    <span>새로운 암호를</span>
+                    <span>입력하십시오</span>
+                </h2>
+
+                <p class="description">
+                    암호를 다시 설정하면 버거킹, 팀홀튼 응용프로그람 봉사를<br>
+                    변경한 암호로 리용할수 있습니다.
+                </p>
+            </div>
+
+            <form action="" method="post">
+                <fieldset>
+                    <legend class="sr-only">새로운 암호 설정</legend>
+
+                    <div class="password_group">
+                        <label for="new-password" class="pw_label">
+                            새로운 암호
+                        </label>
+
+                        <div class="password_fields">
+                            <div class="input_box">
+                                <input
+                                    type="password"
+                                    id="new-password"
+                                    name="new_password"
+                                    placeholder="새로운 암호를 입력하십시오"
+                                    autocomplete="new-password"
+                                >
+
+                                <button type="button" class="pw_btn">
+                                    <span class="sr-only">암호 보기</span>
+                                </button>
+                            </div>
+
+                            <div class="input_box">
+                                <label for="new-password-confirm" class="sr-only">
+                                    새로운 암호 확인
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="new-password-confirm"
+                                    name="new_password_confirm"
+                                    placeholder="새로운 암호를 입력하십시오"
+                                    autocomplete="new-password"
+                                >
+
+                                <button type="button" class="pw_btn">
+                                    <span class="sr-only">암호 확인 보기</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="pw_error">
+                        적어도 8글자, 많아야 20글자를 사용하십시오.
+                    </p>
+
+                    <ul class="pw_check">
+                        <li><span>8글자 이상 20글자 이하</span></li>
+                        <li><span>영어 대문자와 소문자, 수자, 특수문자 중 3가지 이상 배합</span></li>
+                        <li><span>사용자이름과 같은 암호는 쓸수 없습니다.</span></li>
+                    </ul>
+
+                    <div class="pw_notice_box">
+                        <p class="pw_notice">
+                            같은 글자의 반복이나 련속된 글자, 남이 알기 쉬운 번호
+                            (생일, 주민번호, 손전화번호)는 사용하지 마십시오.
+                        </p>
+                    </div>
+
+                    <div class="sns_notice">
+                        <p class="sns_notice_title">
+                            사회교제망(Kakao, Naver, Apple) 봉사 암호 다시 설정 안내
+                        </p>
+
+                        <p class="sns_notice_text">
+                            암호 다시 설정은 BKR 응용프로그람 봉사를 위한 암호 다시 설정 봉사이며,
+                            사회교제망 봉사의 암호 변경을 원할 시,
+                            해당 사회교제망(Kakao, Naver, Apple)봉사를 통해 암호를 변경하십시오.
+                        </p>
+                    </div>
+
+                    <button type="submit" class="reset_btn" disabled>
+                        완료
+                    </button>
+                </fieldset>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
