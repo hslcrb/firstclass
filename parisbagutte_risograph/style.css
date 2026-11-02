@@ -1,0 +1,217 @@
+:root {
+    --style-bg: #f9c9dc;
+    --style-surface: #fffaf9;
+    --style-ink: #251950;
+    --style-accent: #174bb1;
+    --style-line: #174bb1;
+    --style-radius: 0px;
+    --style-shadow: 7px 7px 0 #e05b94;
+}
+
+html {
+    min-width: 0;
+    overflow-x: visible;
+}
+
+body.style-page {
+    --primary: var(--style-ink);
+    --text: var(--style-ink);
+    --bg: var(--style-surface);
+    --dark-navy: var(--style-ink);
+    --navy: var(--style-ink);
+    --accent-blue: var(--style-accent);
+    --blue-gray: var(--style-ink);
+    min-width: 0;
+    min-height: 100dvh;
+    padding: 28px 18px;
+    color: var(--style-ink);
+    background-color: var(--style-bg);
+}
+
+.style-page #wrap {
+    width: 100%;
+    max-width: 660px;
+    min-width: 0;
+    min-height: calc(100dvh - 56px);
+    margin: 0 auto;
+    padding: clamp(18px, 5vw, 36px);
+    color: var(--style-ink);
+    background: var(--style-surface);
+    border-radius: var(--style-radius);
+    box-shadow: var(--style-shadow);
+}
+
+.style-page header {
+    position: relative;
+    min-height: 52px;
+    height: auto;
+    padding: 12px 48px;
+    line-height: 1.2;
+}
+
+.style-page header h1 {
+    line-height: 1.2;
+    text-align: center;
+}
+
+.style-page .prev_btn {
+    left: 0;
+}
+
+.style-page .close_btn {
+    right: 0;
+}
+
+.style-page main {
+    width: 100%;
+    padding: 36px 0 20px;
+    color: var(--style-ink);
+    background: transparent;
+}
+
+.style-page .title {
+    line-height: 1.2;
+}
+
+.style-page .title > span {
+    line-height: 1.2;
+}
+
+.style-page .intro {
+    min-height: 0;
+    margin-bottom: 30px;
+}
+
+.style-page .intro:has(.welcome_img) {
+    padding-right: min(26%, 120px);
+}
+
+.style-page .welcome_img {
+    top: 0;
+    right: 0;
+    width: min(23%, 100px);
+    height: auto;
+}
+
+.style-page .description, .style-page .pw_notice, .style-page .night_notice {
+    line-height: 1.5;
+}
+
+.style-page input[type="email"], .style-page input[type="password"] {
+    min-width: 0;
+    min-height: 52px;
+    border: 2px solid var(--style-line);
+    border-radius: var(--style-radius);
+    color: var(--style-ink);
+    background: #ffffff;
+}
+
+.style-page input::placeholder {
+    color: #595959;
+}
+
+.style-page input[aria-invalid="true"] {
+    border-color: #b00020;
+}
+
+.style-page .error_message, .style-page .pw_error {
+    color: #a50024;
+}
+
+.style-page .login_btn, .style-page .reset_btn, .style-page .join_btn {
+    min-height: 52px;
+    height: auto;
+    padding: 12px 18px;
+    border: 2px solid var(--style-accent);
+    border-radius: var(--style-radius);
+    color: #ffffff;
+    background-color: var(--style-accent);
+}
+
+.style-page .login_btn:disabled, .style-page .reset_btn:disabled, .style-page .join_btn:disabled {
+    color: #333333;
+    background: #dedede;
+    border-color: #777777;
+    opacity: 100%;
+}
+
+.style-page .section_divider {
+    width: 100%;
+    max-width: 350px;
+}
+
+.style-page .sns_login > p {
+    color: var(--style-ink);
+    white-space: normal;
+}
+
+.style-page .sns_list {
+    flex-wrap: wrap;
+}
+
+.style-page .marketing_title, .style-page .marketing_list span {
+    line-height: 1.4;
+}
+
+.style-page .frameBox {
+    width: min(100%, 500px);
+    min-height: 320px;
+    height: auto;
+    background: var(--style-surface);
+    box-shadow: var(--style-shadow);
+}
+
+.style-page .frameBox > .item {
+    padding: 16px;
+    color: var(--style-ink);
+    background: var(--style-surface);
+    border: 1px solid var(--style-line);
+}
+
+.style-page :focus-visible, .style-page input:focus-visible {
+    outline: 3px solid #b00020;
+    outline-offset: 3px;
+}
+
+.style-page .check:focus-visible + span, .style-page .toggle_check:focus-visible + span {
+    outline: 3px solid #b00020;
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    body.style-page {
+        padding: 12px;
+    }
+    .style-page #wrap {
+        min-height: calc(100dvh - 24px);
+        padding: 18px;
+    }
+    .style-page .login_option, .style-page .login_link {
+        flex-wrap: wrap;
+        height: auto;
+        gap: 12px;
+    }
+    .style-page .reset_btn, .style-page .join_btn {
+        margin-top: 48px;
+    }
+}
+
+body.style-page {
+    background-image: radial-gradient(#df5b93 1px, transparent 1px);
+    background-size: 7px 7px;
+}
+
+.style-page #wrap {
+    border: 3px solid #174bb1;
+}
+
+.style-page h1, .style-page h2 {
+    color: #174bb1;
+    text-shadow: 2px 2px 0 rgb(224 91 148 / 50%);
+}
+
+.style-page .setting_group {
+    padding: 16px;
+    background: #fbd1e4;
+    border-left: 5px solid #174bb1;
+}
