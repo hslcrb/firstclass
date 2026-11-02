@@ -450,3 +450,20 @@ body.style-page {
     background: #1d568b;
     box-shadow: 4px 4px 0 #cfa542;
 }
+
+/* 1번: 천리마체를 제목과 안내판에, 긴고딕을 본문에 사용한다. */
+body.style-page {
+    --font: "Chonrima Heavy", "Long Gothic", sans-serif;
+    --font-pre: "Long Gothic", sans-serif;
+    --font-BKR: "Chonrima Heavy", "Long Gothic", sans-serif;
+    font-family: "Long Gothic", sans-serif;
+}
+.style-page :is(a, button, input, textarea, select, label, p, li, span, legend),
+.style-page :is(.email_label, .pw_label, .setting_title) {
+    font-family: "Long Gothic", sans-serif;
+}
+.style-page header h1, .style-page .title, .style-page .title > span,
+.style-page #wrap::before, .style-page :is(.login_btn, .reset_btn, .join_btn) {
+    font-family: "Chonrima Heavy", "Long Gothic", sans-serif;
+    font-weight: 400;
+}

@@ -610,3 +610,65 @@ body.style-page {
     color: #d00020;
     text-shadow: 2px 2px 0 #ffe35a;
 }
+
+/* 사용자가 제공한 제목명조(광명)와 붓글체를 각각 본문과 제목에 사용한다. */
+body.style-page {
+    --font: "Title Myongjo", "조선 광명", serif;
+    --font-pre: "Title Myongjo", "조선 광명", serif;
+    --font-BKR: "조선 붓글", "Title Myongjo", serif;
+    font-family: "Title Myongjo", "조선 광명", serif;
+}
+.style-page :is(a, button, input, textarea, select, label, p, li, span, legend),
+.style-page :is(.email_label, .pw_label, .setting_title) {
+    font-family: "Title Myongjo", "조선 광명", serif;
+}
+.style-page header h1, .style-page .title, .style-page .title > span,
+.style-page #wrap::before, .style-page :is(.login_btn, .reset_btn, .join_btn) {
+    font-family: "조선 붓글", "Title Myongjo", "조선 광명", serif;
+    font-weight: 400;
+}
+
+/* 2번 제과점: 왼쪽 대형 선전화와 오른쪽 접속 화면 */
+.style-page #wrap {
+    display: grid;
+    grid-template-areas: "poster heading" "poster content";
+    grid-template-columns: minmax(250px, .85fr) minmax(0, 1.15fr);
+    grid-template-rows: auto 1fr;
+    gap: 0 clamp(22px, 3vw, 40px);
+    max-width: 1160px;
+}
+.style-page #wrap::before {
+    content: "★\A 봉사\A 안내";
+    grid-area: poster;
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: min(75vh, 700px);
+    min-height: 480px;
+    padding: 24px 10px;
+    border: 5px solid #083e75;
+    background-image: repeating-conic-gradient(from -10deg at 50% 70%, #fa242c 0deg 12deg, #c8001e 12deg 24deg);
+    font-size: clamp(5.4rem, 7vw, 9rem);
+    line-height: 1.12;
+    text-align: center;
+    white-space: pre-line;
+}
+.style-page header { grid-area: heading; margin-top: 0; }
+.style-page main { grid-area: content; min-width: 0; padding-top: 36px; }
+@media (max-width: 700px) {
+    .style-page #wrap {
+        grid-template-areas: "heading" "poster" "content";
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto 1fr;
+    }
+    .style-page #wrap::before {
+        position: static;
+        height: auto;
+        min-height: 180px;
+        margin: 18px 0 0;
+        font-size: clamp(4.2rem, 11vw, 6rem);
+    }
+}

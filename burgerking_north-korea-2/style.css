@@ -617,3 +617,20 @@ body.style-page {
         font-size: clamp(4.5rem, 10vw, 6.8rem);
     }
 }
+
+/* 사용자가 제공한 제목명조(광명)와 붓글체를 각각 본문과 제목에 사용한다. */
+body.style-page {
+    --font: "Title Myongjo", "조선 광명", serif;
+    --font-pre: "Title Myongjo", "조선 광명", serif;
+    --font-BKR: "조선 붓글", "Title Myongjo", serif;
+    font-family: "Title Myongjo", "조선 광명", serif;
+}
+.style-page :is(a, button, input, textarea, select, label, p, li, span, legend),
+.style-page :is(.email_label, .pw_label, .setting_title) {
+    font-family: "Title Myongjo", "조선 광명", serif;
+}
+.style-page header h1, .style-page .title, .style-page .title > span,
+.style-page #wrap::before, .style-page :is(.login_btn, .reset_btn, .join_btn) {
+    font-family: "조선 붓글", "Title Myongjo", "조선 광명", serif;
+    font-weight: 400;
+}
