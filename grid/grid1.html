@@ -46,6 +46,19 @@
                 grid-row: auto;
             }
         }
+
+        .auto-container {
+            bordefr: 1px solid red;
+            padding: 20px;
+        }
+        .auto-container > div {
+            background-color: tomato;
+            border-radius: 10px;
+        }
+        .auto-container {
+            display: grid;
+            gap: 10px;
+        }
     </style> <!-- 균등하게 fr, 가져간다. ()-->
 </head>
 <body>
@@ -56,6 +69,12 @@
         <div class="grid04">아이템04</div>
         <div class="grid05">아이템05</div>
         <div class="grid06">아이템06</div>
+    </div>
+
+    <div class="auto-container">
+        <div class="grid01">아이템01</div>
+        <div class="grid02">아이템02</div>
+        <div class="grid03">아이템03</div>
     </div>
 </body>
 </html>
