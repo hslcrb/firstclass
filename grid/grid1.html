@@ -63,7 +63,8 @@
         .auto-container {
             display: grid;
             /* auto-fill은 빈 트랙을 유지한다 */
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            /* fit은 트랙을 채운다 */
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 10px;
         }
     </style> <!-- 균등하게 fr, 가져간다. ()-->
