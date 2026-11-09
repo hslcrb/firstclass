@@ -36,6 +36,19 @@
         .nh-container > .grid07 { grid-area: g; }
         .nh-container > .grid08 { grid-area: h; }
         .nh-container > .grid09 { grid-area: i; }
+
+        @media (max-width: 768px) {
+            .nh-container {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-areas:
+                    "a a"
+                    "b c"
+                    "d e"
+                    "f g"
+                    "h i"
+                ;
+            }
+        }
     </style>
 </head>
 <body>
@@ -46,9 +59,9 @@
         <div class="grid04">NH투자증권</div>
         <div class="grid05">NH-Amundi자산운용</div>
         <div class="grid06">NH벤처투자</div>
-        <div class="grid06">NH농협생명</div>
-        <div class="grid06">NH농협손해보험</div>
-        <div class="grid06">NH농협캐피탈</div>
+        <div class="grid07">NH농협생명</div>
+        <div class="grid08">NH농협손해보험</div>
+        <div class="grid09">NH농협캐피탈</div>
     </div>
 </body>
 </html>
