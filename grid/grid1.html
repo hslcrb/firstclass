@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>그리드 기초</title>
+    <style>
+        * { margin: 0; padding: 0; }
+        .container {
+            margin: 50px;
+            border: 1px solid lightblue;
+            padding: 20px;
+        }
+        .container > div {
+            padding: 20px;
+        }
+        .container > div:nth-child(even) {
+            background-color: lightcoral;
+        }
+        .container > div:nth-child(odd) {
+            background-color: lightgray;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
